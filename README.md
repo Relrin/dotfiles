@@ -25,10 +25,10 @@ sudo apt-get install vim
 git clone https://github.com/Relrin/dotfiles.git ~/Downloads/
 ```  
 ```
-cp -r ~/Downloads/dotfiles/vim/* ~/.vim/
+cp -t ~/Downloads/dotfiles/vim/* ~/.vim/
 ```  
 ```
-cp ~/Downloads/dotfiles/vim/.vimrc ~/
+mv ~/Downloads/dotfiles/vim/.vimrc ~/
 ```  
 3. Run VIM and get fun ;)
 

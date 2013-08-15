@@ -1,0 +1,82 @@
+snippet <? "php open tag" b
+<?php
+
+
+endsnippet
+
+snippet vdd "php var_dump and die"
+var_dump(${1}); die();
+endsnippet
+
+snippet ns "php namespace" b
+namespace ${1:`!p 
+abspath = os.path.abspath(path)
+m = re.search(r'[A-Z].+(?=/)', abspath)
+if m:
+	snip.rv = m.group().replace('/', '\\')
+`};
+
+endsnippet
+
+snippet nc "php namespace and class" b
+namespace ${1:`!p 
+abspath = os.path.abspath(path)
+m = re.search(r'[A-Z].+(?=/)', abspath)
+if m:
+	snip.rv = m.group().replace('/', '\\')
+`};
+
+/**
+ * ${3:@author `whoami`}${4}
+ */
+class ${2:`!p
+snip.rv = re.match(r'.*(?=\.)', fn).group()
+`}
+{
+}
+endsnippet
+
+snippet st "php static function" b
+${1:public} static function $2($3)
+{
+	${4}
+}
+endsnippet
+
+snippet __ "php constructor" b
+${1:public} function __construct($2)
+{
+	${3}
+}
+endsnippet
+
+snippet sg "Setter and Getter" b
+
+/**
+ * @var ${3:`!p snip.rv = t[2].capitalize()`}${4}
+ */
+${1:protected} $$2;
+
+public function set`!p snip.rv = t[2].capitalize()`(`!p
+if re.match(r'[A-Z].*', t[3]):
+	snip.rv = t[3] + ' '
+else:
+	snip.rv = ''
+`$$2)
+{
+	$this->$2 = $$2;
+
+	return $this;
+}
+
+public function get`!p snip.rv = t[2].capitalize()`()
+{
+	return $this->$2;
+}
+endsnippet
+
+snippet if "php if" !b
+if (${1}) {
+	${2}
+}
+endsnippet

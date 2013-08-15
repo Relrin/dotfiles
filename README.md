@@ -28,7 +28,7 @@ git clone https://github.com/Relrin/dotfiles.git ~/Downloads/
 cp -t ~/Downloads/dotfiles/vim/* ~/.vim/
 ```  
 ```
-mv ~/Downloads/dotfiles/vim/.vimrc ~/
+mv ~/vim/.vimrc ~/
 ```  
 3. Run VIM and get fun ;)
 

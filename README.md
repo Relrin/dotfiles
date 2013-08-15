@@ -1,5 +1,4 @@
 # Dotfiles for VIM/Conky/etc.
-========
 
 ## F.A.Q.
 

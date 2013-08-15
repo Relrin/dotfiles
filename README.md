@@ -14,6 +14,7 @@ A: Of course, you can use this easily
 ```  
 sudo add-apt-repository ppa:fcwu-tw/ppa  
 sudo apt-get update  
-sudo apt-get install vim  ```  
+sudo apt-get install vim  
+```  
 2. 
 

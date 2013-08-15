@@ -1,0 +1,130 @@
+# Use Xft?
+use_xft yes
+xftfont mono:size=10
+xftalpha 0.8
+text_buffer_size 2048
+
+# Update interval in seconds
+update_interval 1
+
+# This is the number of times Conky will update before quitting.
+# Set to zero to run forever.
+total_run_times 0
+
+# Full transparency (under Gnome 3)
+own_window_type normal
+own_window_argb_visual yes
+own_window_argb_value 255
+
+# Create own window instead of using desktop (required in nautilus)
+own_window yes
+own_window_transparent yes
+own_window_type normal
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+
+# Use double buffering (reduces flicker, may not work for everyone)
+double_buffer yes
+
+# Minimum size of text area
+minimum_size 500
+maximum_width 250
+
+# Draw shades?
+draw_shades no
+
+# Draw outlines?
+draw_outline no
+
+# Draw borders around text
+draw_borders no
+
+# Draw borders around graphs
+draw_graph_borders yes
+
+# Stippled borders?
+stippled_borders 0
+
+# border margins
+# border_margin 1
+
+# border width
+border_width 0
+
+# Default colors and also border colors
+default_color white
+#default_shade_color black
+#default_outline_color black
+own_window_colour white
+
+# Text alignment, other possible values are commented
+#alignment top_left
+alignment top_right
+#alignment bottom_left
+#alignment bottom_right
+
+# Gap between borders of screen and text
+# same thing as passing -x at command line
+gap_x 15
+gap_y 50
+
+# Subtract file system buffers from used memory?
+no_buffers yes
+
+# set to yes if you want all text to be in uppercase
+uppercase no
+
+# number of cpu samples to average
+# set to 1 to disable averaging
+cpu_avg_samples 2
+
+# number of net samples to average
+# set to 1 to disable averaging
+net_avg_samples 2
+
+# Force UTF8? note that UTF8 support required XFT
+override_utf8_locale yes
+
+# Add spaces to keep things from moving about?  This only affects certain objects.
+use_spacer none
+
+TEXT
+${color gray}Update Manager ${hr 2}
+${color}You can install ${execi 3600 aptitude search "~U" | wc -l} updates.
+
+${color gray}System ${hr 2}
+${color}${nodename}
+${color}${pre_exec lsb_release -i -s}
+${color}Release ${pre_exec lsb_release -r -s} (${pre_exec lsb_release -c -s})
+${color}Kernel ${sysname} ${kernel}
+
+${color gray}Resources ${hr 2}
+${color}CPU1 ${cpu cpu1}%${alignr}${color ff6e00}${cpubar cpu1 10,60}
+${color}CPU2 ${cpu cpu2}%${alignr}${color cb0c29}${cpubar cpu2 10,60}
+${color}Mem  ${mem}/${memmax}${alignr}${color ab1852}${membar 10,60}
+${color}Swap ${swap}/${swapmax}${alignr}${color 49a835}${swapbar 10,60}
+${color}Receiving ${downspeedf eth0} KB/s ${alignr}${color 2d7db3}${downspeedgraph eth0 10,60}
+${color}Total Received${alignr}${totaldown eth0}
+${color}Sending   ${upspeedf eth0} KB/s ${alignr}${color 844798}${upspeedgraph eth0 10,60}
+${color}Total Sent${alignr}${totalup eth0}
+
+${color gray}File Systems ${hr 2}
+${color}Ubuntu ${fs_used /}/${fs_size /}${alignr}${color 6796C8}${fs_bar 10,60 /}
+${color}C ${fs_used /media/relrin/D61420C01420A589}/${fs_size /media/relrin/D61420C01420A589}${alignr}${color 6796C8}${fs_bar 10,60 /media/relrin/D61420C01420A589}
+${color}D ${fs_used /media/relrin/Игры, музыка и т.п.}/${fs_size /media/relrin/Игры, музыка и т.п.}${alignr}${color 6796C8}${fs_bar 10,60 /media/relrin/Игры, музыка и т.п.}
+
+${color gray}Processes ${hr 2}
+${color}Command${alignr}CPU%
+${color}${top name 1}${alignr}${top cpu 1}
+${color}${top name 2}${alignr}${top cpu 2}
+${color}${top name 3}${alignr}${top cpu 3}
+${color}${top name 4}${alignr}${top cpu 4}
+${color}${top name 5}${alignr}${top cpu 5}
+${color}${top name 6}${alignr}${top cpu 6}
+
+${color}Command${alignr}RES
+${color}${top_mem name 1}${alignr}${top_mem mem_res 1}
+${color}${top_mem name 2}${alignr}${top_mem mem_res 2}
+${color}${top_mem name 3}${alignr}${top_mem mem_res 3}
+${color}${top_mem name 4}${alignr}${top_mem mem_res 4}
+${color}${top_mem name 5}${alignr}${top_mem mem_res 5}
+${color}${top_mem name 6}${alignr}${top_mem mem_res 6}

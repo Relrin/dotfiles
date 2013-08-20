@@ -1,0 +1,20 @@
+Main Authors
+============
+
+David Halter (@davidhalter)
+
+
+Contributors (in order of contributions)
+========================================
+
+tek (@tek)
+mattn (@mattn)
+Danilo Bargen (@dbrgn)
+Artur Dryomov (@ming13)
+Akinori Hattori (@hattya)
+Luper Rouch (@flupke)
+Emily Strickland (@lilix)
+Mathieu Comandon (@strycore)
+Jean-Louis Fuchs (@ganwell)
+Nick Hurley (@todesschaf)
+Tinche (@Tinche)

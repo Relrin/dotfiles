@@ -48,6 +48,7 @@ Bundle 'airblade/vim-gitgutter'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
 Bundle 'klen/python-mode'
+Bundle 'davidhalter/jedi-vim'
 
 filetype on
 filetype plugin on
@@ -74,28 +75,28 @@ endif
 set ttyfast
 
 " Enable Syntax Colors
-"  in GUI mode we go with fruity and Monaco 13
-"  in CLI mode myterm looks better (fruity is GUI only)
+" in GUI mode we go with fruity and Monaco 13
+" in CLI mode myterm looks better (fruity is GUI only)
 syntax on
 if has("gui_running")
-  " GUI? Then maximize windows and set custom color sheme
+" GUI? Then maximize windows and set custom color sheme
   set lines=999 columns=999
   colorscheme molokai
-  " automatically open at startup
-	autocmd vimenter * TagbarToggle
-	autocmd vimenter * NERDTree
-	autocmd vimenter * if !argc() | NERDTree | endif
+" automatically open at startup
+autocmd vimenter * TagbarToggle
+autocmd vimenter * NERDTree
+autocmd vimenter * if !argc() | NERDTree | endif
   if has("mac")
     set guifont=Consolas:h13
     set fuoptions=maxvert,maxhorz
-    " does not work properly on os x
-    " au GUIEnter * set fullscreen
+" does not work properly on os x
+" au GUIEnter * set fullscreen
   else
-    " set default font for GUI
+" set default font for GUI
     set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
   endif
 else
-  " Oh, its terminal... then what we do...
+" Oh, its terminal... then what we do...
   colorscheme myterm
 endif
 
@@ -122,14 +123,14 @@ set nu
 set scrolloff=5
 
 " Disable swaps and backups
-set nobackup       " no backup files
-set nowritebackup  " only in case you don't want a backup file while editing
-set noswapfile     " no swap files
+set nobackup " no backup files
+set nowritebackup " only in case you don't want a backup file while editing
+set noswapfile " no swap files
 
 " Hide some panels
-"set guioptions-=m  "remove menu bar
-set guioptions-=T   "remove toolbar
-"set guioptions-=r  "remove right-hand scroll bar
+"set guioptions-=m "remove menu bar
+set guioptions-=T "remove toolbar
+"set guioptions-=r "remove right-hand scroll bar
 
 " Tab Settings
 set smarttab
@@ -153,14 +154,14 @@ let g:airline_powerline_fonts = 1
 
 " TagBar settings
 map <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 0  " autofocus on Tagbar open
+let g:tagbar_autofocus = 0 " autofocus on Tagbar open
 
 " NerdTree settings
 map <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$']
 
 " TaskList settings
-map <F2> :TaskList<CR>     " show pending tasks list
+map <F2> :TaskList<CR> " show pending tasks list
 
 "=====================================================
 " Python-mode settings
@@ -168,20 +169,20 @@ map <F2> :TaskList<CR>     " show pending tasks list
 " Python-mode
 " Activate rope
 " Keys:
-" K             Show python docs
-" <Ctrl-Space>  Rope autocomplete
-" <Ctrl-c>g     Rope goto definition
-" <Ctrl-c>d     Rope show documentation
-" <Ctrl-c>f     Rope find occurrences
-" <Leader>b     Set, unset breakpoint (g:pymode_breakpoint enabled)
-" [[            Jump on previous class or function (normal, visual, operator modes)
-" ]]            Jump on next class or function (normal, visual, operator modes)
-" [M            Jump on previous class or method (normal, visual, operator modes)
-" ]M            Jump on next class or method (normal, visual, operator modes)
+" K Show python docs
+" <Ctrl-Space> Rope autocomplete
+" <Ctrl-c>g Rope goto definition
+" <Ctrl-c>d Rope show documentation
+" <Ctrl-c>f Rope find occurrences
+" <Leader>b Set, unset breakpoint (g:pymode_breakpoint enabled)
+" [[ Jump on previous class or function (normal, visual, operator modes)
+" ]] Jump on next class or function (normal, visual, operator modes)
+" [M Jump on previous class or method (normal, visual, operator modes)
+" ]M Jump on next class or method (normal, visual, operator modes)
 let g:pymode_rope = 0
 
 " Documentation
-let g:pymode_doc = 1
+let g:pymode_doc = 0
 let g:pymode_doc_key = 'K'
 
 "Linting
@@ -210,12 +211,33 @@ let g:pymode_folding = 0
 let g:pymode_run = 1
 
 "=====================================================
+" Jedi-vim
+"=====================================================
+" Disable choose first function/method at autocomplete 
+let g:jedi#popup_select_first = 0  
+
+" Set hotkey for "Go to..."
+let g:jedi#goto_command = "<leader>g"  
+
+" Set hotkey for "Go definition..."
+let g:jedi#get_definition_command = "<leader>d"  
+
+" Set hotkey for rename
+let g:jedi#rename_command = "<leader>r"  
+
+" Set hotkey for "related names"
+let g:jedi#related_names_command = "<leader>n"  
+
+" Set hotkey <Ctrl+Space> for autocomplete
+let g:jedi#autocompletion_command = "<C-Space>"
+
+"=====================================================
 " User hotkeys
 "=====================================================
 
 " Easier moving of code blocks
-vnoremap < <gv    " Shift+> keys
-vnoremap > >gv    " Shift+< keys
+vnoremap < <gv " Shift+> keys
+vnoremap > >gv " Shift+< keys
 
 " Backspace in Visual mode deletes selection
 vnoremap <BS> d
@@ -229,19 +251,19 @@ vnoremap <C-C> "+y
 vnoremap <C-Insert> "+y
 
 " CTRL-V and SHIFT-Insert are Paste
-map <C-V>		"+gP
-map <S-Insert>		"+gP
-cmap <C-V>		<C-R>+
-cmap <S-Insert>		<C-R>+
+map <C-V>	"+gP
+map <S-Insert>	"+gP
+cmap <C-V>	<C-R>+
+cmap <S-Insert>	<C-R>+
 
 " Pasting blockwise and linewise selections is not possible in Insert and
-" Visual mode without the +virtualedit feature.  They are pasted as if they
+" Visual mode without the +virtualedit feature. They are pasted as if they
 " were characterwise instead.
 " Uses the paste.vim autoload script.
 exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
 exe 'vnoremap <script> <C-V>' paste#paste_cmd['v']
-imap <S-Insert>		<C-V>
-vmap <S-Insert>		<C-V>
+imap <S-Insert>	<C-V>
+vmap <S-Insert>	<C-V>
 
 " CTRL-Z is Undo
 noremap <C-z> u
@@ -260,9 +282,9 @@ snoremap <C-a> <C-C>gggH<C-O>G
 xnoremap <C-a> <C-C>ggVG
 
 " CTRL-S is Quicksave command
-noremap <C-s>		:update<CR>
-vnoremap <C-s>		<C-C>:update<CR>
-inoremap <C-s>		<C-O>:update<CR>
+noremap <C-s>	:update<CR>
+vnoremap <C-s>	<C-C>:update<CR>
+inoremap <C-s>	<C-O>:update<CR>
 
 " Shift+Arrows to select block/lines
 " Activate visual mode in normal mode
@@ -302,12 +324,12 @@ nnoremap <leader>Td :set ft=django<CR>
 
 " --- C/C++/C# ---
 let c_no_curly_error=1
-autocmd FileType c    setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-autocmd FileType cpp  setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-autocmd FileType cs   setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+autocmd FileType cs setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 
 " --- Python ---
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python set completeopt-=preview " its need for jedi-vim
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 \ formatoptions+=croq softtabstop=4 smartindent
 \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
@@ -327,7 +349,7 @@ autocmd bufnewfile,bufread *.rhtml setlocal ft=eruby
 autocmd BufNewFile,BufRead *.mako setlocal ft=mako
 autocmd BufNewFile,BufRead *.tmpl setlocal ft=htmljinja
 autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
-autocmd BufNewFile,BufRead *.html,*.htm  call s:SelectHTML()
+autocmd BufNewFile,BufRead *.html,*.htm call s:SelectHTML()
 let html_no_rendering=1
 
 let g:closetag_default_xml=1
@@ -372,23 +394,23 @@ endfunction
 fun! s:SelectHTML()
 let n = 1
 while n < 50 && n < line("$")
-  " check for jinja
+" check for jinja
   if getline(n) =~ '{%\s*\(extends\|block\|macro\|set\|if\|for\|include\|trans\)\>'
     set ft=htmljinja
     return
   endif
-  " check for mako
+" check for mako
     if getline(n) =~ '<%\(def\|inherit\)'
       set ft=mako
       return
     endif
-    " check for genshi
+" check for genshi
     if getline(n) =~ 'xmlns:py\|py:\(match\|for\|if\|def\|strip\|xmlns\)'
       set ft=genshi
       return
     endif
     let n = n + 1
   endwhile
-  " go with html
+" go with html
   set ft=html
 endfun

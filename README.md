@@ -20,7 +20,9 @@ sudo apt-get update
 ```
 sudo apt-get install vim
 ```
-2. Clone my repository somewhere and copy settings:   
+2. Install fonts for vim-airline
+https://github.com/Lokaltog/powerline-fonts
+3. Clone my repository somewhere and copy settings:   
 ```
 git clone https://github.com/Relrin/dotfiles.git ~/Downloads/
 ```  

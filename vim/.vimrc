@@ -30,6 +30,10 @@ Bundle 'bling/vim-airline'
 Bundle 'fisadev/FixedTaskList.vim'
 " Consoles as buffers
 Bundle 'rosenfeld/conque-term'
+" Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML 
+" tags, and more. The plugin provides mappings to easily delete, change and 
+" add such surroundings in pairs.
+Bundle 'tpope/vim-surround'
 
 " --- Snippets support ---
 " Snippets manager (SnipMate), dependencies, and snippets repo
@@ -48,7 +52,12 @@ Bundle 'airblade/vim-gitgutter'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
 Bundle 'klen/python-mode'
+" Jedi-vim autocomplete plugin 
 Bundle 'davidhalter/jedi-vim'
+
+" --- Ruby ---
+" Vim configuration files for editing and compiling Ruby within Vim 
+Bundle 'vim-ruby/vim-ruby'
 
 filetype on
 filetype plugin on
@@ -335,6 +344,17 @@ autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 
+" --- Ruby ---
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
+autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
+autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
+autocmd FileType ruby,eruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType ruby,eruby imap <buffer> <CR> <C-R>=RubyEndToken()<CR>
+
+" --- Go ---
+autocmd FileType go setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
+
 " --- JavaScript ---
 let javascript_enable_domhtmlcss=1
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -344,18 +364,17 @@ autocmd BufNewFile,BufRead *.json setlocal ft=javascript
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 " --- template language support (SGML / XML too) ---
-autocmd FileType html,xhtml,xml,htmldjango,htmljinja,mako setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd bufnewfile,bufread *.rhtml setlocal ft=eruby
 autocmd BufNewFile,BufRead *.mako setlocal ft=mako
 autocmd BufNewFile,BufRead *.tmpl setlocal ft=htmljinja
 autocmd BufNewFile,BufRead *.py_tmpl setlocal ft=python
 autocmd BufNewFile,BufRead *.html,*.htm call s:SelectHTML()
 let html_no_rendering=1
-
 let g:closetag_default_xml=1
 let g:sparkupNextMapping='<c-l>'
 autocmd FileType html,htmldjango,htmljinja,eruby,mako let b:closetag_html_style=1
-autocmd FileType html,xhtml,xml,htmldjango,htmljinja,mako source ~/.vim/scripts/closetag.vim
+autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako source ~/.vim/scripts/closetag.vim
 
 " --- CSS ---
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
@@ -414,3 +433,22 @@ while n < 50 && n < line("$")
 " go with html
   set ft=html
 endfun
+
+" Autocomplete "end" after some keywords
+" ----------------------------------------
+function RubyEndToken()
+    let current_line = getline( '.' )
+    let braces_at_end = '{\s*|\(,\|\s\|\w*|\s*\)\?$'
+    let stuff_without_do = '^\s*class\|if\|unless\|begin\|case\|for\|module\|while\|until\|def'
+      let with_do = 'do\s*|\(,\|\s\|\w*|\s*\)\?$'
+
+      if match(current_line, braces_at_end) >= 0
+        return "\<CR>}\<C-O>O"
+      elseif match(current_line, stuff_without_do) >= 0
+        return "\<CR>end\<C-O>O"
+      elseif match(current_line, with_do) >= 0
+        return "\<CR>end\<C-O>O"
+      else
+        return "\<CR>"
+      endif
+    endfunction

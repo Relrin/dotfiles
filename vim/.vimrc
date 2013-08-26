@@ -59,6 +59,10 @@ Bundle 'davidhalter/jedi-vim'
 " Vim configuration files for editing and compiling Ruby within Vim 
 Bundle 'vim-ruby/vim-ruby'
 
+" --- Go ---
+" Adding support autocomplete for Go language
+Bundle 'Blackrush/vim-gocode'
+
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -353,6 +357,7 @@ autocmd FileType ruby,eruby setlocal expandtab shiftwidth=2 tabstop=2 softtabsto
 autocmd FileType ruby,eruby imap <buffer> <CR> <C-R>=RubyEndToken()<CR>
 
 " --- Go ---
+autocmd FileType go set omnifunc=syntaxcomplete#Complete
 autocmd FileType go setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
 
 " --- JavaScript ---

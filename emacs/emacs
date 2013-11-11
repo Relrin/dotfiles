@@ -1,0 +1,179 @@
+;==========================================
+;;;          Basic parameters           ;;;
+;==========================================
+;; Add standart path for plugins
+(add-to-list 'load-path "~/.emacs.d/")
+(load "package")
+;; Add Marmalade/GNU/MELPA package manager
+(require 'package)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "http://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))
+(package-initialize)
+
+;; Load required packages
+(require 'tramp)
+(require 'compile)
+(require 'concurrent)
+(require 'deferred)
+(require 'epc)
+(require 'popup)
+(require 'flymake-easy)
+(require 'flymake-cursor)
+(require 'ido)
+(ido-mode t)
+
+;; Set default size of Emacs window
+(defun set-frame-size-according-to-resolution ()
+  (interactive)
+  (if window-system
+  (progn
+    ;; use 120 char wide window for largeish displays
+    ;; and smaller 80 column windows for smaller displays
+    ;; pick whatever numbers make sense for you
+    (if (> (x-display-pixel-width) 1280)
+           (add-to-list 'default-frame-alist (cons 'width 125))
+           (add-to-list 'default-frame-alist (cons 'width 40)))
+    ;; for the height, subtract a couple hundred pixels
+    ;; from the screen height (for panels, menubars and
+    ;; whatnot), then divide by the height of a char to
+    ;; get the height we want
+    (add-to-list 'default-frame-alist
+         (cons 'height (/ (- (x-display-pixel-height) 200)
+                             (frame-char-height)))))))
+(set-frame-size-according-to-resolution)
+
+;; Set custom color-theme
+(add-to-list 'load-path "~/.emacs.d/color-theme")
+(require 'color-theme)
+(color-theme-initialize)
+(color-theme-molokai)
+
+;; Set default font for all windows
+(add-to-list 'default-frame-alist '(font . "Ubuntu mono-11"))
+
+;; Enable CUA-mode
+; {Cut, Copy, Paste, Undo} have {X, C, V, Z} keys.
+; Text selection will be highlighted
+; When there's a text selection, typing will over-ride it.
+; Text selection can be done by holding down the ⇧ Shift key and press a arrow key.
+(cua-mode 1)
+
+;; Displaying line numbers
+(global-linum-mode t)
+(line-number-mode t)
+(column-number-mode t)
+
+;; Backup file and recently opened files
+(setq make-backup-files nil) ; stop creating those backup~ files
+(setq auto-save-default nil) ; stop creating those #autosave# files
+
+;; Tabs and spaces in code
+(setq-default indent-tabs-mode nil) ; stop mixed tabs and space
+(setq tab-width 4)                  ; set default to 4
+
+;; Ignore case when searching
+(setq case-fold-search t)
+
+;; Windows and frames
+(setq inhibit-startup-screen t) ; don't show the startup screen
+(require 'tool-bar)             ; don't show the tool bar
+(tool-bar-mode nil)
+
+; Don't blink the cursor
+(blink-cursor-mode nil)
+
+; Make sure transient mark mode is enabled (it should be by default,
+; but just in case)
+(transient-mark-mode t)
+
+; Turn on mouse wheel support for scrolling
+(require 'mwheel)
+(mouse-wheel-mode t)
+
+;==============================================
+;;;           Language support              ;;;
+;==============================================
+;; auto-complete plugin
+(add-to-list 'load-path "~/.emacs.d/auto-complete")
+(require 'auto-complete)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(require 'auto-complete-config)
+(ac-config-default)
+(global-auto-complete-mode t)
+
+;; use flymake-cursor library to display flymake messages at bottom
+(load-library "flymake-cursor")
+(add-hook 'python-mode-hook
+        (lambda ()
+                (unless (eq buffer-file-name nil) (flymake-mode 1))
+                (local-set-key [f2] 'flymake-goto-prev-error) ; F2 -> goto previous error
+                (local-set-key [f3] 'flymake-goto-next-error) ; F3 -> goto next error
+        ))
+
+;-------------=== HTML/CSS ===----------------
+; Web-mode    ->  major mode for editing html templates
+
+
+;--------------=== Python ===-----------------
+; Python-mode in Emacs
+(add-to-list 'load-path "~/.emacs.d/python-mode")
+(require 'python-mode)
+
+; Jedi    -> Python code auto-complete
+(add-to-list 'load-path "~/.emacs.d/jedi")
+(autoload 'jedi:setup "jedi" nil t)
+(add-hook 'python-mode-hook 'jedi:setup)
+(setq jedi:setup-keys t)                      ; optional
+(setq jedi:complete-on-dot t)                 ; optional
+(setq jedi:key-complete (kbd "<C-SPC>"))      ; set auto-complete on CTRL+SPACE
+
+; PEP8    -> Python code checker by PEP8
+(autoload 'python-pep8 "python-pep8")
+(autoload 'pep8 "python-pep8")
+(load "python-pep8")
+; delete trailing whitespace when saving (compliance with PEP8)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+; Flymake -> Python instanlty code checker
+(require 'flymake-python-pyflakes)
+(add-hook 'python-mode-hook 'flymake-python-pyflakes-load)
+(setq flymake-python-pyflakes-executable "flake8")
+(when (load "flymake" t)
+        (defun flymake-pylint-init ()
+                (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                        'flymake-create-temp-inplace))
+                (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+                (list "pep8" (list "–repeat" local-file))))
+        (add-to-list 'flymake-allowed-file-name-masks
+                '("\\.py\\'" flymake-pylint-init)))
+
+; iPython -> default interpreter
+(setq-default py-shell-name "ipython")
+(setq-default py-which-bufname "IPython")
+; use the wx backend, for both mayavi and matplotlib
+(setq py-python-command-args
+  '("--gui=wx" "--pylab=wx" "-colors" "Linux"))
+(setq py-force-py-shell-name-p t)
+; switch to the interpreter after executing code
+(setq py-shell-switch-buffers-on-execute-p t)
+(setq py-switch-buffers-on-execute-p t)
+; don't split windows
+(setq py-split-windows-on-execute-p nil)
+; try to automagically figure out indentation
+(setq py-smart-indentation t)
+
+;===============================================
+;;;             User hotkeys                 ;;;
+;===============================================
+;; cycle through buffers with Alt-Tab (or use default <C-X LeftArrow>/<C-X RightArrow>)
+(global-set-key (kbd "<M-tab>") 'bury-buffer)
+
+;; Add hotkeys for PEP8 and iPython
+(add-hook 'python-mode-hook
+        (lambda ()
+                (local-set-key (kbd "C-c p") 'pep8)
+                (local-set-key (kbd "C-c i") 'ipython)
+        ))

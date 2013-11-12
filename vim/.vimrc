@@ -13,17 +13,15 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
-" --- Code/project navigation ---
+"---------=== Code/project navigation ===-------------
 " NERDTree - Project and file navigation
 Bundle 'scrooloose/nerdtree'
-" NERDcommenter - Code commenter
-Bundle 'scrooloose/nerdcommenter'
 " TagBar - Class/module browser
 Bundle 'majutsushi/tagbar'
 " MinubufferExploler - Tabs for multiple files
 Bundle 'fholgado/minibufexpl.vim'
 
-" --- Other ---
+"------------------=== Other ===----------------------
 " vim-airline
 Bundle 'bling/vim-airline'
 " Pending tasks list
@@ -34,19 +32,19 @@ Bundle 'rosenfeld/conque-term'
 " tags, and more. The plugin provides mappings to easily delete, change and 
 " add such surroundings in pairs.
 Bundle 'tpope/vim-surround'
+" Terminal at VIM
+Bundle 'rosenfeld/conque-term'
 
-" --- Snippets support ---
+"--------------=== Snippets support ===---------------
 " Snippets manager (SnipMate), dependencies, and snippets repo
 Bundle 'garbas/vim-snipmate'
 Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 Bundle 'honza/vim-snippets'
 
-" --- Version Control System plugins (git/svn/etc.) ---
-" Git integration
-Bundle 'motemen/git-vim'
-" Git diff icons on the side of the file lines
-Bundle 'airblade/vim-gitgutter'
+"---------------=== Languages support ===-------------
+" reStructuredText Syntax for Vim
+Bundle 'mitsuhiko/vim-rst'
 
 " --- Python ---
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
@@ -54,14 +52,10 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'klen/python-mode'
 " Jedi-vim autocomplete plugin 
 Bundle 'davidhalter/jedi-vim'
-
-" --- Ruby ---
-" Vim configuration files for editing and compiling Ruby within Vim 
-Bundle 'vim-ruby/vim-ruby'
-
-" --- Go ---
-" Adding support autocomplete for Go language
-Bundle 'Blackrush/vim-gocode'
+" Jinja for vim
+Bundle 'mitsuhiko/vim-jinja'
+" Combined Python 2/3 for Vim
+Bundle 'mitsuhiko/vim-python-combined'
 
 filetype on
 filetype plugin on
@@ -93,29 +87,31 @@ set ttyfast
 syntax on
 if has("gui_running")
 " GUI? Then maximize windows and set custom color sheme
-  set lines=999 columns=999
+  set lines=80 columns=125
   colorscheme molokai
 " automatically open at startup
-autocmd vimenter * TagbarToggle
-autocmd vimenter * NERDTree
-autocmd vimenter * if !argc() | NERDTree | endif
-  if has("mac")
-    set guifont=Consolas:h13
-    set fuoptions=maxvert,maxhorz
+" autocmd vimenter * TagbarToggle
+" autocmd vimenter * NERDTree
+" autocmd vimenter * if !argc() | NERDTree | endif
+
+" special settings for vim
+if has("mac")
+  set guifont=Consolas:h13
+  set fuoptions=maxvert,maxhorz
 " does not work properly on os x
 " au GUIEnter * set fullscreen
-  else
+else
 " set default font for GUI
-    set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ 9
-  endif
+  set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
+endif
 else
 " Oh, its terminal... then what we do...
   colorscheme myterm
 endif
 
 " Don't bell and blink
-set noerrorbells
-set vb t_vb=
+set visualbell t_vb=    " turn off error beep/flash
+set novisualbell        " turn off visual bell
 
 " Utf-8 default encoding
 set enc=utf-8
@@ -126,7 +122,7 @@ set ls=2
 " Incremental search
 set incsearch
 
-" highlighted search results
+" Highlighted search results
 set hlsearch
 
 " Line numbers
@@ -176,6 +172,14 @@ let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o
 " TaskList settings
 map <F2> :TaskList<CR> " show pending tasks list
 
+" MiniBufExplorer settings
+hi MBENormal               guifg=#808080 guibg=fg
+hi MBEChanged              guifg=#CD5907 guibg=fg
+hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
+hi MBEVisibleChanged       guifg=#F1266F guibg=fg
+hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
+hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
+
 "=====================================================
 " Python-mode settings
 "=====================================================
@@ -221,28 +225,13 @@ let g:pymode_syntax_space_errors = g:pymode_syntax_all
 let g:pymode_folding = 0
 
 " Get possibility to run Python code
-let g:pymode_run = 1
+let g:pymode_run = 0
 
 "=====================================================
 " Jedi-vim
 "=====================================================
 " Disable choose first function/method at autocomplete 
 let g:jedi#popup_select_first = 0  
-
-" Set hotkey for "Go to..."
-let g:jedi#goto_command = "<leader>g"  
-
-" Set hotkey for "Go definition..."
-let g:jedi#get_definition_command = "<leader>d"  
-
-" Set hotkey for rename
-let g:jedi#rename_command = "<leader>r"  
-
-" Set hotkey for "related names"
-let g:jedi#related_names_command = "<leader>n"  
-
-" Set hotkey <Ctrl+Space> for autocomplete
-let g:jedi#autocompletion_command = "<C-Space>"
 
 "=====================================================
 " User hotkeys
@@ -307,13 +296,20 @@ nmap <S-Down> V
 vmap <S-Up> k
 vmap <S-Down> j
 
+
 " Bind <Ctrl+Arrows> keys to move between the tabs
 noremap <C-Right> :MBEbn<CR>
 noremap <C-Left> :MBEbp<CR>
 
+" ConqueTerm
 " Run Python-scripts at <F5>
-let g:pymode_run_key = '<F5>'
-
+" let g:pymode_run_key = '<F5>'
+nnoremap <F5> :ConqueTermSplit ipython<CR>
+" and debug-mode for <F6>
+nnoremap <F6> :exe "ConqueTermSplit ipython " . expand("%")<CR>
+let g:ConqueTerm_StartMessages = 0
+let g:ConqueTerm_CloseOnEnd = 0
+      
 " Python code check on PEP8
 autocmd FileType python map <buffer> <leader>8 :PyLint<CR>
 
@@ -350,15 +346,7 @@ autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 s
 
 " --- Ruby ---
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let g:rubycomplete_buffer_loading = 1
-autocmd FileType ruby,eruby let g:rubycomplete_rails = 1
-autocmd FileType ruby,eruby let g:rubycomplete_classes_in_global = 1
 autocmd FileType ruby,eruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
-autocmd FileType ruby,eruby imap <buffer> <CR> <C-R>=RubyEndToken()<CR>
-
-" --- Go ---
-autocmd FileType go set omnifunc=syntaxcomplete#Complete
-autocmd FileType go setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
 
 " --- JavaScript ---
 let javascript_enable_domhtmlcss=1
@@ -438,22 +426,3 @@ while n < 50 && n < line("$")
 " go with html
   set ft=html
 endfun
-
-" Autocomplete "end" after some keywords
-" ----------------------------------------
-function RubyEndToken()
-    let current_line = getline( '.' )
-    let braces_at_end = '{\s*|\(,\|\s\|\w*|\s*\)\?$'
-    let stuff_without_do = '^\s*class\|if\|unless\|begin\|case\|for\|module\|while\|until\|def'
-      let with_do = 'do\s*|\(,\|\s\|\w*|\s*\)\?$'
-
-      if match(current_line, braces_at_end) >= 0
-        return "\<CR>}\<C-O>O"
-      elseif match(current_line, stuff_without_do) >= 0
-        return "\<CR>end\<C-O>O"
-      elseif match(current_line, with_do) >= 0
-        return "\<CR>end\<C-O>O"
-      else
-        return "\<CR>"
-      endif
-    endfunction

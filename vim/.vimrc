@@ -1,25 +1,23 @@
-" no vi-compatible
-set nocompatible
-set backspace=indent,eol,start
-filetype off
+  " no vi-compatible
+  set nocompatible
+  set backspace=indent,eol,start
+  filetype off
 
-"=====================================================
-" Vundle settings
-"=====================================================
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+  "=====================================================
+  " Vundle settings
+  "=====================================================
+  set rtp+=~/.vim/bundle/vundle/
+  call vundle#rc()
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+  " let Vundle manage Vundle
+  " required!
+  Bundle 'gmarik/vundle'
 
 "---------=== Code/project navigation ===-------------
 " NERDTree - Project and file navigation
 Bundle 'scrooloose/nerdtree'
 " TagBar - Class/module browser
 Bundle 'majutsushi/tagbar'
-" MinubufferExploler - Tabs for multiple files
-Bundle 'fholgado/minibufexpl.vim'
 
 "------------------=== Other ===----------------------
 " vim-airline
@@ -108,6 +106,9 @@ else
 " Oh, its terminal... then what we do...
   colorscheme myterm
 endif
+
+tab sball
+set switchbuf=useopen
 
 " Don't bell and blink
 set visualbell t_vb=    " turn off error beep/flash
@@ -296,10 +297,9 @@ nmap <S-Down> V
 vmap <S-Up> k
 vmap <S-Down> j
 
-
 " Bind <Ctrl+Arrows> keys to move between the tabs
-noremap <C-Right> :MBEbn<CR>
-noremap <C-Left> :MBEbp<CR>
+noremap <C-Right> :bn<CR>
+noremap <C-Left> :bp<CR>
 
 " ConqueTerm
 " Run Python-scripts at <F5>

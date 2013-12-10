@@ -298,9 +298,9 @@ vnoremap <C-o> :browse confirm e<CR>
 inoremap <C-o> :browse confirm e<CR>
 
 " CTRL-O is Quicksave as.. file
-noremap <C-S-s>	 :browse confirm saveas<CR>
-vnoremap <C-S-s> :browse confirm saveas<CR>
-inoremap <C-S-s> :browse confirm saveas<CR>
+noremap <C-w>	 :browse confirm saveas<CR>
+vnoremap <C-w> :browse confirm saveas<CR>
+inoremap <C-w> :browse confirm saveas<CR>
 
 " Shift+Arrows to select block/lines
 " Activate visual mode in normal mode

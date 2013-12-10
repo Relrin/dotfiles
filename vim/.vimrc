@@ -293,9 +293,14 @@ vnoremap <C-s>	<C-C>:update<CR>
 inoremap <C-s>	<C-O>:update<CR>
 
 " CTRL-O is Quickopen file
-noremap <C-o>	:browse confirm e<CR>
-vnoremap <C-o>	:browse confirme e<CR>
-inoremap <C-o>	:browse confirm e<CR>
+noremap <C-o> :browse confirm e<CR>
+vnoremap <C-o> :browse confirm e<CR>
+inoremap <C-o> :browse confirm e<CR>
+
+" CTRL-O is Quicksave as.. file
+noremap <C-S-s>	 :browse confirm saveas<CR>
+vnoremap <C-S-s> :browse confirm saveas<CR>
+inoremap <C-S-s> :browse confirm saveas<CR>
 
 " Shift+Arrows to select block/lines
 " Activate visual mode in normal mode

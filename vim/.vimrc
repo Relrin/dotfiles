@@ -1,17 +1,17 @@
-  " no vi-compatible
-  set nocompatible
-  set backspace=indent,eol,start
-  filetype off
+" no vi-compatible
+set nocompatible
+set backspace=indent,eol,start
+filetype off
 
-  "=====================================================
-  " Vundle settings
-  "=====================================================
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
+"=====================================================
+" Vundle settings
+"=====================================================
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
-  " let Vundle manage Vundle
-  " required!
-  Bundle 'gmarik/vundle'
+" let Vundle manage Vundle
+" required!
+Bundle 'gmarik/vundle'
 
 "---------=== Code/project navigation ===-------------
 " NERDTree - Project and file navigation
@@ -22,6 +22,8 @@ Bundle 'majutsushi/tagbar'
 "------------------=== Other ===----------------------
 " vim-airline
 Bundle 'bling/vim-airline'
+" Extention for buffers
+Bundle 'fholgado/minibufexpl.vim'
 " Pending tasks list
 Bundle 'fisadev/FixedTaskList.vim'
 " Consoles as buffers
@@ -174,6 +176,7 @@ let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o
 map <F2> :TaskList<CR> " show pending tasks list
 
 " MiniBufExplorer settings
+map <C-q> :MBEbd<CR> " close current buffer
 hi MBENormal               guifg=#808080 guibg=fg
 hi MBEChanged              guifg=#CD5907 guibg=fg
 hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
@@ -288,6 +291,11 @@ xnoremap <C-a> <C-C>ggVG
 noremap <C-s>	:update<CR>
 vnoremap <C-s>	<C-C>:update<CR>
 inoremap <C-s>	<C-O>:update<CR>
+
+" CTRL-O is Quickopen file
+noremap <C-o>	:browse confirm e<CR>
+vnoremap <C-o>	:browse confirme e<CR>
+inoremap <C-o>	:browse confirm e<CR>
 
 " Shift+Arrows to select block/lines
 " Activate visual mode in normal mode

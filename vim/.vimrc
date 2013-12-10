@@ -22,7 +22,7 @@ Bundle 'majutsushi/tagbar'
 "------------------=== Other ===----------------------
 " vim-airline
 Bundle 'bling/vim-airline'
-" Extention for buffers
+" Extension for buffers
 Bundle 'fholgado/minibufexpl.vim'
 " Pending tasks list
 Bundle 'fisadev/FixedTaskList.vim'

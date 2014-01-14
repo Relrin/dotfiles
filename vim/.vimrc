@@ -22,8 +22,6 @@ Bundle 'majutsushi/tagbar'
 "------------------=== Other ===----------------------
 " vim-airline
 Bundle 'bling/vim-airline'
-" Extension for buffers
-Bundle 'fholgado/minibufexpl.vim'
 " Pending tasks list
 Bundle 'fisadev/FixedTaskList.vim'
 " Consoles as buffers
@@ -176,14 +174,7 @@ let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o
 map <F2> :TaskList<CR> " show pending tasks list
 
 " MiniBufExplorer settings
-map <C-q> :MBEbd<CR> " close current buffer
-hi MBENormal               guifg=#808080 guibg=fg
-hi MBEChanged              guifg=#CD5907 guibg=fg
-hi MBEVisibleNormal        guifg=#5DC2D6 guibg=fg
-hi MBEVisibleChanged       guifg=#F1266F guibg=fg
-hi MBEVisibleActiveNormal  guifg=#A6DB29 guibg=fg
-hi MBEVisibleActiveChanged guifg=#F1266F guibg=fg
-
+map <C-q> :bd<CR> " close current buffer
 "=====================================================
 " Python-mode settings
 "=====================================================

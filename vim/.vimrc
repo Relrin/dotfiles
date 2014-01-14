@@ -26,8 +26,8 @@ Bundle 'bling/vim-airline'
 Bundle 'fisadev/FixedTaskList.vim'
 " Consoles as buffers
 Bundle 'rosenfeld/conque-term'
-" Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML 
-" tags, and more. The plugin provides mappings to easily delete, change and 
+" Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML
+" tags, and more. The plugin provides mappings to easily delete, change and
 " add such surroundings in pairs.
 Bundle 'tpope/vim-surround'
 " Terminal at VIM
@@ -48,7 +48,7 @@ Bundle 'mitsuhiko/vim-rst'
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
 Bundle 'klen/python-mode'
-" Jedi-vim autocomplete plugin 
+" Jedi-vim autocomplete plugin
 Bundle 'davidhalter/jedi-vim'
 " Jinja for vim
 Bundle 'mitsuhiko/vim-jinja'
@@ -111,8 +111,8 @@ tab sball
 set switchbuf=useopen
 
 " Don't bell and blink
-set visualbell t_vb=    " turn off error beep/flash
-set novisualbell        " turn off visual bell
+set visualbell t_vb= " turn off error beep/flash
+set novisualbell " turn off visual bell
 
 " Utf-8 default encoding
 set enc=utf-8
@@ -192,6 +192,8 @@ map <C-q> :bd<CR> " close current buffer
 " [M Jump on previous class or method (normal, visual, operator modes)
 " ]M Jump on next class or method (normal, visual, operator modes)
 let g:pymode_rope = 0
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
 
 " Documentation
 let g:pymode_doc = 0
@@ -225,8 +227,8 @@ let g:pymode_run = 0
 "=====================================================
 " Jedi-vim
 "=====================================================
-" Disable choose first function/method at autocomplete 
-let g:jedi#popup_select_first = 0  
+" Disable choose first function/method at autocomplete
+let g:jedi#popup_select_first = 0
 
 "=====================================================
 " User hotkeys
@@ -248,10 +250,10 @@ vnoremap <C-C> "+y
 vnoremap <C-Insert> "+y
 
 " CTRL-V and SHIFT-Insert are Paste
-map <C-V>	"+gP
-map <S-Insert>	"+gP
-cmap <C-V>	<C-R>+
-cmap <S-Insert>	<C-R>+
+map <C-V> "+gP
+map <S-Insert> "+gP
+cmap <C-V> <C-R>+
+cmap <S-Insert> <C-R>+
 
 " Pasting blockwise and linewise selections is not possible in Insert and
 " Visual mode without the +virtualedit feature. They are pasted as if they
@@ -259,8 +261,8 @@ cmap <S-Insert>	<C-R>+
 " Uses the paste.vim autoload script.
 exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
 exe 'vnoremap <script> <C-V>' paste#paste_cmd['v']
-imap <S-Insert>	<C-V>
-vmap <S-Insert>	<C-V>
+imap <S-Insert>        <C-V>
+vmap <S-Insert>        <C-V>
 
 " CTRL-Z is Undo
 noremap <C-z> u
@@ -279,9 +281,9 @@ snoremap <C-a> <C-C>gggH<C-O>G
 xnoremap <C-a> <C-C>ggVG
 
 " CTRL-S is Quicksave command
-noremap <C-s>	:update<CR>
-vnoremap <C-s>	<C-C>:update<CR>
-inoremap <C-s>	<C-O>:update<CR>
+noremap <C-s> :update<CR>
+vnoremap <C-s> <C-C>:update<CR>
+inoremap <C-s> <C-O>:update<CR>
 
 " CTRL-O is Quickopen file
 noremap <C-o> :browse confirm e<CR>
@@ -289,7 +291,7 @@ vnoremap <C-o> :browse confirm e<CR>
 inoremap <C-o> :browse confirm e<CR>
 
 " CTRL-O is Quicksave as.. file
-noremap <C-w>	 :browse confirm saveas<CR>
+noremap <C-w> :browse confirm saveas<CR>
 vnoremap <C-w> :browse confirm saveas<CR>
 inoremap <C-w> :browse confirm saveas<CR>
 
@@ -313,9 +315,8 @@ nnoremap <F5> :ConqueTermSplit ipython<CR>
 nnoremap <F6> :exe "ConqueTermSplit ipython " . expand("%")<CR>
 let g:ConqueTerm_StartMessages = 0
 let g:ConqueTerm_CloseOnEnd = 0
-      
 " Python code check on PEP8
-autocmd FileType python map <buffer> <leader>8 :PyLint<CR>
+autocmd FileType python map <buffer> <leader>8 :PymodeLint<CR>
 
 " Activate autocomplete at <Ctrl+Space>
 inoremap <C-space> <C-x><C-o>

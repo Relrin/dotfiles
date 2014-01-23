@@ -44,6 +44,10 @@ Bundle 'honza/vim-snippets'
 " reStructuredText Syntax for Vim
 Bundle 'mitsuhiko/vim-rst'
 
+" --- Erlang ---
+" Highlighting, code folding/completion, auto-indent for Erlang
+Bundle 'jimenezrick/vimerl'
+
 " --- Python ---
 " Python mode (indentation, doc, refactor, lints, code checking, motion and
 " operators, highlighting, run and ipdb breakpoints)
@@ -85,7 +89,7 @@ set ttyfast
 syntax on
 if has("gui_running")
 " GUI? Then maximize windows and set custom color sheme
-  set lines=80 columns=125
+  set lines=50 columns=125
   colorscheme molokai
 " automatically open at startup
 " autocmd vimenter * TagbarToggle
@@ -341,6 +345,9 @@ let c_no_curly_error=1
 autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType cs setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+
+" --- Erlang ---
+autocmd FileType erlang setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " --- Python ---
 autocmd FileType python set completeopt-=preview " its need for jedi-vim

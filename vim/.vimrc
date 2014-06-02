@@ -1,64 +1,42 @@
-" no vi-compatible
-set nocompatible
-set backspace=indent,eol,start
-filetype off
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
 "=====================================================
 " Vundle settings
 "=====================================================
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'		" let Vundle manage Vundle, required
 
 "---------=== Code/project navigation ===-------------
-" NERDTree - Project and file navigation
-Bundle 'scrooloose/nerdtree'
-" TagBar - Class/module browser
-Bundle 'majutsushi/tagbar'
+Plugin 'scrooloose/nerdtree' 	    	" Project and file navigation
+Plugin 'majutsushi/tagbar'          	" Class/module browser
 
 "------------------=== Other ===----------------------
-" vim-airline
-Bundle 'bling/vim-airline'
-" Pending tasks list
-Bundle 'fisadev/FixedTaskList.vim'
-" Consoles as buffers
-Bundle 'rosenfeld/conque-term'
-" Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML
-" tags, and more. The plugin provides mappings to easily delete, change and
-" add such surroundings in pairs.
-Bundle 'tpope/vim-surround'
-" Terminal at VIM
-Bundle 'rosenfeld/conque-term'
+Plugin 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
+Plugin 'fisadev/FixedTaskList.vim'  	" Pending tasks list
+Plugin 'rosenfeld/conque-term'      	" Consoles as buffers
+Plugin 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
 
 "--------------=== Snippets support ===---------------
-" Snippets manager (SnipMate), dependencies, and snippets repo
-Bundle 'garbas/vim-snipmate'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'honza/vim-snippets'
+Plugin 'garbas/vim-snipmate'		" Snippets manager
+Plugin 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
+Plugin 'tomtom/tlib_vim'		" dependencies #2
+Plugin 'honza/vim-snippets'		" snippets repo
 
 "---------------=== Languages support ===-------------
-" reStructuredText Syntax for Vim
-Bundle 'mitsuhiko/vim-rst'
-
-" --- Erlang ---
-" Highlighting, code folding/completion, auto-indent for Erlang
-Bundle 'jimenezrick/vimerl'
+" --- Markup ---
+Plugin 'mitsuhiko/vim-rst'		" reStructuredText Syntax support for Vim
 
 " --- Python ---
-" Python mode (indentation, doc, refactor, lints, code checking, motion and
-" operators, highlighting, run and ipdb breakpoints)
-Bundle 'klen/python-mode'
-" Jedi-vim autocomplete plugin
-Bundle 'davidhalter/jedi-vim'
-" Jinja for vim
-Bundle 'mitsuhiko/vim-jinja'
-" Combined Python 2/3 for Vim
-Bundle 'mitsuhiko/vim-python-combined'
+Plugin 'klen/python-mode'	        " Python mode (docs, refactor, lints, highlighting, run and ipdb and more)
+Plugin 'davidhalter/jedi-vim' 		" Jedi-vim autocomplete plugin
+Plugin 'mitsuhiko/vim-jinja'		" Jinja support for vim
+Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
 
+call vundle#end()            		" required
 filetype on
 filetype plugin on
 filetype plugin indent on
@@ -66,6 +44,7 @@ filetype plugin indent on
 "=====================================================
 " General settings
 "=====================================================
+set backspace=indent,eol,start
 " This must happen before the syntax system is enabled
 aunmenu Help.
 aunmenu Window.
@@ -107,7 +86,7 @@ else
   set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
 endif
 else
-" Oh, its terminal... then what we do...
+" oh, its terminal... then what we do...
   colorscheme myterm
 endif
 
@@ -116,35 +95,24 @@ set switchbuf=useopen
 
 " Don't bell and blink
 set visualbell t_vb= " turn off error beep/flash
-set novisualbell " turn off visual bell
+set novisualbell     " turn off visual bell
 
-" Utf-8 default encoding
-set enc=utf-8
-
-" Always show status bar
-set ls=2
-
-" Incremental search
-set incsearch
-
-" Highlighted search results
-set hlsearch
-
-" Line numbers
-set nu
-
-" Keep some more lines for scope
-set scrolloff=5
+set enc=utf-8	     " utf-8 default encoding
+set ls=2             " always show status bar
+set incsearch	     " incremental search
+set hlsearch	     " highlighted search results
+set nu	             " line numbers
+set scrolloff=5	     " keep some more lines for scope
 
 " Disable swaps and backups
-set nobackup " no backup files
-set nowritebackup " only in case you don't want a backup file while editing
-set noswapfile " no swap files
+set nobackup 	     " no backup files
+set nowritebackup    " only in case you don't want a backup file while editing
+set noswapfile 	     " no swap files
 
 " Hide some panels
-"set guioptions-=m "remove menu bar
-set guioptions-=T "remove toolbar
-"set guioptions-=r "remove right-hand scroll bar
+"set guioptions-=m   " remove menu bar
+set guioptions-=T    " remove toolbar
+"set guioptions-=r   " remove right-hand scroll bar
 
 " Tab Settings
 set smarttab
@@ -165,6 +133,7 @@ let g:snippets_dir = "~/.vim/vim-snippets/snippets"
 set laststatus=2
 let g:airline_theme='badwolf'
 let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
 
 " TagBar settings
 map <F4> :TagbarToggle<CR>
@@ -179,6 +148,7 @@ map <F2> :TaskList<CR> " show pending tasks list
 
 " MiniBufExplorer settings
 map <C-q> :bd<CR> " close current buffer
+
 "=====================================================
 " Python-mode settings
 "=====================================================
@@ -237,7 +207,6 @@ let g:jedi#popup_select_first = 0
 "=====================================================
 " User hotkeys
 "=====================================================
-
 " Easier moving of code blocks
 vnoremap < <gv " Shift+> keys
 vnoremap > >gv " Shift+< keys
@@ -265,8 +234,8 @@ cmap <S-Insert> <C-R>+
 " Uses the paste.vim autoload script.
 exe 'inoremap <script> <C-V>' paste#paste_cmd['i']
 exe 'vnoremap <script> <C-V>' paste#paste_cmd['v']
-imap <S-Insert>        <C-V>
-vmap <S-Insert>        <C-V>
+imap <S-Insert> <C-V>
+vmap <S-Insert> <C-V>
 
 " CTRL-Z is Undo
 noremap <C-z> u
@@ -339,9 +308,7 @@ nnoremap <leader>Td :set ft=django<CR>
 "=====================================================
 " Languages support
 "=====================================================
-
 " --- C/C++/C# ---
-let c_no_curly_error=1
 autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType cs setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
@@ -350,7 +317,7 @@ autocmd FileType cs setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType erlang setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 " --- Python ---
-autocmd FileType python set completeopt-=preview " its need for jedi-vim
+"autocmd FileType python set completeopt-=preview " its need for jedi-vim
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 \ formatoptions+=croq softtabstop=4 smartindent
 \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
@@ -438,3 +405,5 @@ while n < 50 && n < line("$")
 " go with html
   set ft=html
 endfun
+
+

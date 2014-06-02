@@ -144,10 +144,10 @@ map <F3> :NERDTreeToggle<CR>
 let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$']
 
 " TaskList settings
-map <F2> :TaskList<CR> " show pending tasks list
+map <F2> :TaskList<CR> 	   " show pending tasks list
 
 " MiniBufExplorer settings
-map <C-q> :bd<CR> " close current buffer
+map <C-q> :bd<CR> 	   " close current buffer
 
 "=====================================================
 " Python-mode settings
@@ -215,16 +215,16 @@ vnoremap > >gv " Shift+< keys
 vnoremap <BS> d
 
 " CTRL-X and SHIFT-Del are Cut
-vnoremap <C-X> "+x
-vnoremap <S-Del> "+x
+vnoremap <C-X>      " +x
+vnoremap <S-Del>    " +x
 
 " CTRL-C and CTRL-Insert are Copy
-vnoremap <C-C> "+y
-vnoremap <C-Insert> "+y
+vnoremap <C-C> 	    " +y
+vnoremap <C-Insert> " +y
 
 " CTRL-V and SHIFT-Insert are Paste
-map <C-V> "+gP
-map <S-Insert> "+gP
+map <C-V> 	    " +gP
+map <S-Insert> 	    " +gP
 cmap <C-V> <C-R>+
 cmap <S-Insert> <C-R>+
 
@@ -279,6 +279,16 @@ vmap <S-Down> j
 " Bind <Ctrl+Arrows> keys to move between the tabs
 noremap <C-Right> :bn<CR>
 noremap <C-Left> :bp<CR>
+
+" Bind <Alt+Up/Down> keys for splitting tabs
+nnoremap <M-Up> <C-w>v		" split window horizontally
+nnoremap <M-Down> <C-w>s	" split window vertically
+
+" Bind <Alt+i/k/j/l> keys for moving between splitting tabs
+nnoremap <M-i> <C-w>k		" Up
+nnoremap <M-k> <C-w>j		" Down
+nnoremap <M-j> <C-w>h		" Left
+nnoremap <M-l> <C-w>l 		" Right
 
 " ConqueTerm
 " Run Python-scripts at <F5>

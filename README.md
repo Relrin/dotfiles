@@ -34,6 +34,6 @@ A: Of course, you can use this easily
   ```  
 5. Run VIM and enter:  
   ```
-  :BundleInstall
+  :PluginInstall
   ```
 6. Restart VIM and get fun ;)

@@ -11,14 +11,13 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'		" let Vundle manage Vundle, required
 
 "---------=== Code/project navigation ===-------------
-Plugin 'scrooloose/nerdtree' 	    	" Project and file navigation
+Plugin 'Shougo/unite.vim' 		" Navigation between buffers and files
 Plugin 'majutsushi/tagbar'          	" Class/module browser
 
 "------------------=== Other ===----------------------
-Plugin 'bling/vim-airline'   	    	" Lean & mean status/tabline for vim
-Plugin 'fisadev/FixedTaskList.vim'  	" Pending tasks list
-Plugin 'rosenfeld/conque-term'      	" Consoles as buffers
-Plugin 'tpope/vim-surround'	   	" Parentheses, brackets, quotes, XML tags, and more
+Plugin 'fisadev/FixedTaskList.vim' 	" Pending tasks list
+Plugin 'rosenfeld/conque-term' 		" Consoles as buffers
+Plugin 'tpope/vim-surround'		" Parentheses, brackets, quotes, XML tags, and more
 
 "--------------=== Snippets support ===---------------
 Plugin 'garbas/vim-snipmate'		" Snippets manager
@@ -27,9 +26,6 @@ Plugin 'tomtom/tlib_vim'		" dependencies #2
 Plugin 'honza/vim-snippets'		" snippets repo
 
 "---------------=== Languages support ===-------------
-" --- Markup ---
-Plugin 'mitsuhiko/vim-rst'		" reStructuredText Syntax support for Vim
-
 " --- Python ---
 Plugin 'klen/python-mode'	        " Python mode (docs, refactor, lints, highlighting, run and ipdb and more)
 Plugin 'davidhalter/jedi-vim' 		" Jedi-vim autocomplete plugin
@@ -69,12 +65,7 @@ syntax on
 if has("gui_running")
 " GUI? Then maximize windows and set custom color sheme
   set lines=50 columns=125
-  colorscheme molokai
-" automatically open at startup
-" autocmd vimenter * TagbarToggle
-" autocmd vimenter * NERDTree
-" autocmd vimenter * if !argc() | NERDTree | endif
-
+  colorscheme fruity-molokai
 " special settings for vim
 if has("mac")
   set guifont=Consolas:h13
@@ -86,28 +77,37 @@ else
   set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
 endif
 else
-" oh, its terminal... then what we do...
+" its terminal, setup another theme
   colorscheme myterm
 endif
 
 tab sball
 set switchbuf=useopen
 
+" Customize the wildmenu
+set wildmenu
+set wildignore+=*.dll,*.o,*.pyc,*.bak,*.exe,*.jpg,*.jpeg,*.png,*.gif,*$py.class,*.class,*/*.dSYM/*,*.dylib
+set wildmode=list:full
+
 " Don't bell and blink
 set visualbell t_vb= " turn off error beep/flash
 set novisualbell     " turn off visual bell
 
 set enc=utf-8	     " utf-8 default encoding
-set ls=2             " always show status bar
+set ls=2 	     " always show status bar
 set incsearch	     " incremental search
 set hlsearch	     " highlighted search results
-set nu	             " line numbers
+set nu		     " line numbers
 set scrolloff=5	     " keep some more lines for scope
-
-" Disable swaps and backups
-set nobackup 	     " no backup files
-set nowritebackup    " only in case you don't want a backup file while editing
-set noswapfile 	     " no swap files
+ 
+" Swaps and backups
+if has("win32") || has("win64")
+  set dir=$TMP
+  set backupdir=$TMP
+else
+  set dir=/tmp
+  set backupdir=/tmp
+endif
 
 " Hide some panels
 "set guioptions-=m   " remove menu bar
@@ -129,26 +129,22 @@ augroup END
 " SnipMate settings
 let g:snippets_dir = "~/.vim/vim-snippets/snippets"
 
-" Vim-Airline settings
-set laststatus=2
-let g:airline_theme='badwolf'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+" Unite settings
+nnoremap <F1> :Unite file<CR>	" browse the list of files in the current directory
+nnoremap <F2> :Unite buffer<CR> " browse a list of the currently opened buffers
+
+" TaskList settings
+map <F3> :TaskList<CR> 	   	" show pending tasks list
 
 " TagBar settings
 map <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 0 " autofocus on Tagbar open
+let g:tagbar_autofocus = 0 	" autofocus on Tagbar open
 
-" NerdTree settings
-map <F3> :NERDTreeToggle<CR>
-let NERDTreeIgnore=['\~$', '\.pyc$', '\.pyo$', '\.class$', 'pip-log\.txt$', '\.o$']
-
-" TaskList settings
-map <F2> :TaskList<CR> 	   " show pending tasks list
-
-" MiniBufExplorer settings
-map <C-q> :bd<CR> 	   " close current buffer
+" ConqueTerm
+nnoremap <F5> :ConqueTermSplit ipython<CR>			  " run python-scripts at <F5>
+nnoremap <F6> :exe "ConqueTermSplit ipython " . expand("%")<CR>   " and debug-mode for <F6>
+let g:ConqueTerm_StartMessages = 0
+let g:ConqueTerm_CloseOnEnd = 0
 
 "=====================================================
 " Python-mode settings
@@ -176,7 +172,7 @@ let g:pymode_doc_key = 'K'
 "Linting
 let g:pymode_lint = 1
 let g:pymode_lint_checker = "pyflakes,pep8"
-let g:pymode_lint_ignore="E501,W601,C0110"
+let g:pymode_lint_ignore="E501,W601,C0110,W0612,E124,E251"
 " Auto check on save
 let g:pymode_lint_write = 1
 
@@ -192,6 +188,7 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_syntax_indent_errors = g:pymode_syntax_all
 let g:pymode_syntax_space_errors = g:pymode_syntax_all
+let g:pymode_options = 0
 
 " Don't autofold code
 let g:pymode_folding = 0
@@ -216,16 +213,16 @@ vnoremap > >gv " Shift+< keys
 vnoremap <BS> d
 
 " CTRL-X and SHIFT-Del are Cut
-vnoremap <C-X>      " +x
-vnoremap <S-Del>    " +x
+vnoremap <C-X> " +x
+vnoremap <S-Del> " +x
 
 " CTRL-C and CTRL-Insert are Copy
-vnoremap <C-C> 	    " +y
+vnoremap <C-C> " +y
 vnoremap <C-Insert> " +y
 
 " CTRL-V and SHIFT-Insert are Paste
-map <C-V> 	    " +gP
-map <S-Insert> 	    " +gP
+map <C-V> " +gP
+map <S-Insert> " +gP
 cmap <C-V> <C-R>+
 cmap <S-Insert> <C-R>+
 
@@ -277,30 +274,10 @@ nmap <S-Down> V
 vmap <S-Up> k
 vmap <S-Down> j
 
-" Bind <Ctrl+Arrows> keys to move between the tabs
-noremap <C-Right> :bn<CR>
-noremap <C-Left> :bp<CR>
-
-" Bind <Alt+Up/Down> keys for splitting tabs
-nnoremap <M-Up> <C-w>v		" split window horizontally
-nnoremap <M-Down> <C-w>s	" split window vertically
-
-" Bind <Alt+i/k/j/l> keys for moving between splitting tabs
-nnoremap <M-i> <C-w>k		" Up
-nnoremap <M-k> <C-w>j		" Down
-nnoremap <M-j> <C-w>h		" Left
-nnoremap <M-l> <C-w>l 		" Right
-
-" ConqueTerm
-" Run Python-scripts at <F5>
-" let g:pymode_run_key = '<F5>'
-nnoremap <F5> :ConqueTermSplit ipython<CR>
-" and debug-mode for <F6>
-nnoremap <F6> :exe "ConqueTermSplit ipython " . expand("%")<CR>
-let g:ConqueTerm_StartMessages = 0
-let g:ConqueTerm_CloseOnEnd = 0
-" Python code check on PEP8
-autocmd FileType python map <buffer> <leader>8 :PymodeLint<CR>
+" Settings for buffers
+map <C-q> :bd<CR> 	  " close current buffer
+noremap <C-Right> :bn<CR> " move to next buffer
+noremap <C-Left> :bp<CR>  " move to previous buffer
 
 " Activate autocomplete at <Ctrl+Space>
 inoremap <C-space> <C-x><C-o>
@@ -308,11 +285,13 @@ inoremap <C-space> <C-x><C-o>
 " Generate and insert UUID4 into code by <F12> key
 nnoremap <F12> :call InsertUUID4()<CR>
 
+" Python code check on PEP8
+autocmd FileType python map <buffer> <leader>8 :PymodeLint<CR>
+
 " Easy switching languages
 nnoremap <leader>Th :set ft=htmljinja<CR>
 nnoremap <leader>Tp :set ft=python<CR>
 nnoremap <leader>Tj :set ft=javascript<CR>
-nnoremap <leader>Tr :set ft=rst<CR>
 nnoremap <leader>Tc :set ft=css<CR>
 nnoremap <leader>Td :set ft=django<CR>
 
@@ -322,29 +301,56 @@ nnoremap <leader>Td :set ft=django<CR>
 " --- C/C++/C# ---
 autocmd FileType c setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType cpp setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
-autocmd FileType cs setlocal tabstop=8 softtabstop=4 shiftwidth=4 expandtab
+autocmd FileType cs setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+autocmd FileType c setlocal commentstring=/*\ %s\ */
+autocmd FileType cpp,cs setlocal commentstring=//\ %s
+
+" --- CSS ---
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+autocmd FileType css setlocal commentstring=/*\ %s\ */
 
 " --- Erlang ---
-autocmd FileType erlang setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+autocmd FileType erlang setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 
-" --- Python ---
-"autocmd FileType python set completeopt-=preview " its need for jedi-vim
-autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
-\ formatoptions+=croq softtabstop=4 smartindent
-\ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
-autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+" --- Go ---
+autocmd FileType go setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
 
-" --- Ruby ---
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+" --- HTML ---
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+
+" --- Java ---
+autocmd FileType java setlocal shiftwidth=2 tabstop=8 softtabstop=2 expandtab
+autocmd FileType java setlocal commentstring=//\ %s
 
 " --- JavaScript ---
 let javascript_enable_domhtmlcss=1
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd BufNewFile,BufRead *.json setlocal ft=javascript
 
-" --- HTML ---
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+" --- JSON ---
+autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+" --- Lua ---
+autocmd FileType lua setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
+" --- Python ---
+autocmd FileType python setlocal completeopt-=preview
+autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
+\ formatoptions+=croq softtabstop=4 smartindent
+\ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+autocmd FileType pyrex setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4 smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class,with
+
+" --- reStructuredText ---
+autocmd BufNewFile,BufRead *.txt setlocal ft=rst
+autocmd FileType rst setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
+\ formatoptions+=nqt textwidth=74
+
+" --- Ruby ---
+autocmd FileType ruby,eruby setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
+
+" --- Vim ---
+autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
 
 " --- template language support (SGML / XML too) ---
 autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
@@ -358,21 +364,6 @@ let g:closetag_default_xml=1
 let g:sparkupNextMapping='<c-l>'
 autocmd FileType html,htmldjango,htmljinja,eruby,mako let b:closetag_html_style=1
 autocmd FileType html,xhtml,xml,htmldjango,htmljinja,eruby,mako source ~/.vim/scripts/closetag.vim
-
-" --- CSS ---
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-
-" --- VIM ---
-autocmd FileType vim setlocal expandtab shiftwidth=2 tabstop=8 softtabstop=2
-
-" --- CMake ---
-autocmd BufNewFile,BufRead CMakeLists.txt setlocal ft=cmake
-
-" --- RST ---
-autocmd BufNewFile,BufRead *.txt setlocal ft=rst
-autocmd FileType rst setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
-\ formatoptions+=nqt textwidth=74
 
 "=====================================================
 " User functions
@@ -416,5 +407,4 @@ while n < 50 && n < line("$")
 " go with html
   set ft=html
 endfun
-
 

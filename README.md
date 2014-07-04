@@ -19,9 +19,9 @@ sudo apt-get install vim
 2. Install fonts for vim-airline  
   https://github.com/Lokaltog/powerline-fonts  
 3. Install Vundle plugin  
-  ```
+```
   git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle  
-  ```  
+```  
 4. Clone my repository somewhere and copy settings:   
 ```
 git clone https://github.com/Relrin/dotfiles.git ~/Downloads/  

@@ -127,7 +127,7 @@ hi xmlTagName       		guifg=#00bdec
 hi xmlEndTag        		guifg=#00bdec
 hi xmlNamespace     		guifg=#00bdec                   gui=underline
 hi xmlAttribPunct   		guifg=#cccaa9                   gui=bold
-hi xmlEqual         		uifg=#cccaa9                   	gui=bold
+hi xmlEqual         		guifg=#cccaa9                  	gui=bold
 hi xmlCdata         		guifg=#bf0945                   gui=bold
 hi xmlCdataCdata		guifg=#ac1446   guibg=#23010c   gui=none
 hi xmlCdataStart		guifg=#bf0945                   gui=bold

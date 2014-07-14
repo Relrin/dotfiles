@@ -1301,7 +1301,7 @@
     </option>
     <option name="PY.BUILTIN_NAME">
       <value>
-        <option name="FOREGROUND" value="f6d76b" />
+        <option name="FOREGROUND" value="ffee04" />
         <option name="FONT_TYPE" value="1" />
         <option name="EFFECT_TYPE" value="0" />
       </value>
@@ -1360,7 +1360,7 @@
     </option>
     <option name="PY.KEYWORD_ARGUMENT">
       <value>
-        <option name="FOREGROUND" value="ebff85" />
+        <option name="FOREGROUND" value="fd971f" />
         <option name="EFFECT_TYPE" value="0" />
       </value>
     </option>

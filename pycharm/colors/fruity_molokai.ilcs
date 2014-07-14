@@ -7,16 +7,17 @@
   <option name="EDITOR_FONT_NAME" value="Source Code Pro" />
   <colors>
     <option name="CARET_COLOR" value="f8f8f0" />
-    <option name="CARET_ROW_COLOR" value="3e3d32" />
-    <option name="CONSOLE_BACKGROUND_KEY" value="272822" />
+    <option name="CARET_ROW_COLOR" value="1217" />
+    <option name="CONSOLE_BACKGROUND_KEY" value="1217" />
     <option name="FILESTATUS_MODIFIED" value="3ab412" />
     <option name="FILESTATUS_NOT_CHANGED_IMMEDIATE" value="11b4" />
-    <option name="GUTTER_BACKGROUND" value="272822" />
-    <option name="INDENT_GUIDE" value="3b3a32" />
+    <option name="GUTTER_BACKGROUND" value="1217" />
+    <option name="INDENT_GUIDE" value="1217" />
     <option name="LINE_NUMBERS_COLOR" value="f8f8f2" />
-    <option name="SELECTED_INDENT_GUIDE" value="3b3a32" />
-    <option name="SELECTION_BACKGROUND" value="49483e" />
-    <option name="WHITESPACES" value="3b3a32" />
+    <option name="READONLY_BACKGROUND" value="" />
+    <option name="SELECTED_INDENT_GUIDE" value="1217" />
+    <option name="SELECTION_BACKGROUND" value="" />
+    <option name="WHITESPACES" value="1217" />
   </colors>
   <attributes>
     <option name="BAD_CHARACTER">
@@ -28,7 +29,7 @@
     </option>
     <option name="BREAKPOINT_ATTRIBUTES">
       <value>
-        <option name="BACKGROUND" value="743d3d" />
+        <option name="BACKGROUND" value="aa5e5e" />
         <option name="EFFECT_TYPE" value="0" />
       </value>
     </option>
@@ -237,7 +238,7 @@
     </option>
     <option name="CONSOLE_BLACK_OUTPUT">
       <value>
-        <option name="FOREGROUND" value="0" />
+        <option name="FOREGROUND" value="636363" />
         <option name="EFFECT_TYPE" value="0" />
       </value>
     </option>
@@ -267,7 +268,7 @@
     </option>
     <option name="CONSOLE_DARKGRAY_OUTPUT">
       <value>
-        <option name="FOREGROUND" value="555555" />
+        <option name="FOREGROUND" value="808080" />
         <option name="EFFECT_TYPE" value="0" />
       </value>
     </option>
@@ -796,7 +797,6 @@
       <value>
         <option name="FOREGROUND" value="c7c7ff" />
         <option name="BACKGROUND" value="161717" />
-        <option name="FONT_TYPE" value="2" />
         <option name="EFFECT_COLOR" value="c7c7ff" />
         <option name="EFFECT_TYPE" value="1" />
       </value>
@@ -947,7 +947,6 @@
     <option name="HYPERLINK_ATTRIBUTES">
       <value>
         <option name="FOREGROUND" value="c7c7ff" />
-        <option name="FONT_TYPE" value="2" />
         <option name="EFFECT_COLOR" value="c7c7ff" />
         <option name="EFFECT_TYPE" value="1" />
       </value>

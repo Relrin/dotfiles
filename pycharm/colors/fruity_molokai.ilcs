@@ -1360,7 +1360,7 @@
     </option>
     <option name="PY.KEYWORD_ARGUMENT">
       <value>
-        <option name="FOREGROUND" value="ffffff" />
+        <option name="FOREGROUND" value="ebff85" />
         <option name="EFFECT_TYPE" value="0" />
       </value>
     </option>
@@ -1385,7 +1385,7 @@
     </option>
     <option name="PY.PARAMETER">
       <value>
-        <option name="FOREGROUND" value="ffffff" />
+        <option name="FOREGROUND" value="b167fa" />
         <option name="EFFECT_TYPE" value="0" />
       </value>
     </option>

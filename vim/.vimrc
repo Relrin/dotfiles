@@ -28,9 +28,8 @@ Plugin 'honza/vim-snippets'		" snippets repo
 Plugin 'scrooloose/syntastic'		" Syntax checking plugin for Vim
 
 " --- Clojure ---
-Plugin 'tpope/vim-fireplace'            " Clojure completion	
+Plugin 'tpope/vim-fireplace'        " Clojure completion	
 Plugin 'guns/vim-clojure-highlight'	" Highlighting code
-
 
 " --- Java ---
 Plugin 'vim-scripts/javacomplete'	" Javacomplete, an omni-completion script of JAVA language for vim 7

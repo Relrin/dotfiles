@@ -17,6 +17,7 @@ Plugin 'majutsushi/tagbar' 		" Class/module browser
 Plugin 'fisadev/FixedTaskList.vim' 	" Pending tasks list
 Plugin 'rosenfeld/conque-term' 		" Consoles as buffers
 Plugin 'tpope/vim-surround'		" Parentheses, brackets, quotes, XML tags, and more
+Plugin 'kien/rainbow_parentheses.vim'   " Color all 
 
 "--------------=== Snippets support ===---------------
 Plugin 'garbas/vim-snipmate'		" Snippets manager
@@ -30,6 +31,7 @@ Plugin 'scrooloose/syntastic'		" Syntax checking plugin for Vim
 " --- Clojure ---
 Plugin 'tpope/vim-fireplace'            " Clojure completion	
 Plugin 'guns/vim-clojure-highlight'	" Highlighting code
+Plugin 'guns/vim-clojure-static'        " Highlighting for static types
 
 " --- Java ---
 Plugin 'vim-scripts/javacomplete'	" Javacomplete, an omni-completion script of JAVA language for vim 7
@@ -41,6 +43,7 @@ Plugin 'vim-scripts/Jinja'		" Jinja support for vim
 Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
 Plugin 'hynek/vim-python-pep8-indent'   " PEP8 indent
 
+
 call vundle#end() " required
 filetype on
 filetype plugin on
@@ -49,6 +52,7 @@ filetype plugin indent on
 "=====================================================
 " General settings
 "=====================================================
+
 set backspace=indent,eol,start
 " This must happen before the syntax system is enabled
 aunmenu Help.
@@ -81,7 +85,8 @@ if has("mac")
     set fuoptions=maxvert,maxhorz
 else
     " set default font for GUI
-    set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
+    "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
+    set guifont=Input\ Mono\ Regular\ 10
 endif
 else
    " its terminal, setup another theme
@@ -90,6 +95,9 @@ endif
 
 tab sball
 set switchbuf=useopen
+
+" Use system clipboard
+set clipboard+=unnamed
 
 " Customize the wildmenu
 set wildmenu
@@ -147,8 +155,8 @@ map <F4> :TagbarToggle<CR>
 let g:tagbar_autofocus = 0 " autofocus on Tagbar open
 
 " ConqueTerm
-nnoremap <F5> :ConqueTermSplit ipython<CR>      " run python-scripts at <F5>
-nnoremap <F6> :exe "ConqueTermSplit ipython	" . expand("%")<CR> " and debug-mode for <F6>
+nnoremap <F5> :ConqueTermSplit ipython<CR> " run python-scripts at <F5>
+nnoremap <F6> :exe "ConqueTermSplit ipython" . expand("%")<CR> " and debug-mode for <F6>
 let g:ConqueTerm_StartMessages = 0
 let g:ConqueTerm_CloseOnEnd = 0
 
@@ -163,12 +171,42 @@ let g:syntastic_enable_signs = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
 noremap <f7> :w<CR>:SyntasticCheck<CR>
+
 let g:syntastic_python_checkers = ['flake8', 'python']
+let g:syntastic_python_flake8_args='--ignore=E121,E128,E711,E301,E261,E241,E124,E126,E721
+\ --max-line-length=80'
+
 " Better :sign interface symbols
 let g:syntastic_error_symbol = 'X'
 let g:syntastic_style_error_symbol = 'X'
 let g:syntastic_warning_symbol = 'x'
 let g:syntastic_style_warning_symbol = 'x'
+
+" Rainbow Parentheses
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['black',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+au Syntax * RainbowParenthesesLoadChevrons
+
 
 "=====================================================
 " User hotkeys
@@ -235,6 +273,9 @@ autocmd FileType cs setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 autocmd FileType c setlocal commentstring=/*\ %s\ */
 autocmd FileType cpp,cs setlocal commentstring=//\ %s
 
+" --- Clojure ---
+autocmd FileType clj setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+
 " --- CSS ---
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
@@ -252,6 +293,10 @@ autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd BufNewFile,BufRead *.json setlocal ft=javascript
 
 " --- Python ---
+let python_highlight_all=1
+let python_highlight_exceptions=0
+let python_highlight_builtins=0
+let python_slow_sync=1
 autocmd FileType python setlocal completeopt-=preview
 autocmd FileType python setlocal expandtab shiftwidth=4 tabstop=8
 \ formatoptions+=croq softtabstop=4 smartindent

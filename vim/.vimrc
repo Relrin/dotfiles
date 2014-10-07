@@ -52,6 +52,7 @@ Plugin 'idanarye/breeze.vim'		" Html navigation like vim-easymotion, tag matchin
 
 " --- Python ---
 Plugin 'davidhalter/jedi-vim'		" Awesome Python autocompletion with VIM
+Plugin 'klen/python-mode'		" Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
 Plugin 'vim-scripts/pythoncomplete'	" Pythoncomplete omni-completion script shipped with vim 7
 Plugin 'mitsuhiko/vim-jinja'		" Jinja support for vim
 Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
@@ -114,7 +115,7 @@ tab sball
 set switchbuf=useopen
 
 " Use system clipboard
-set clipboard+=unnamed
+set clipboard=unnamedplus
 
 " Customize the wildmenu
 set wildmenu
@@ -197,22 +198,22 @@ let g:syntastic_style_warning_symbol = 'x'
 
 " Rainbow Parentheses
 let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['black',       'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
+    \ ['gray',        '#a9834b'],
+    \ ['brown',       '#442299'],
+    \ ['darkgray',    '#3b0cbd'],
+    \ ['darkgreen',   '#3311bb'],
+    \ ['darkcyan',    '#4444dd'],
+    \ ['darkred',     '#11aabb'],
+    \ ['darkmagenta', '#12bdb9'],
+    \ ['brown',       '#22ccaa'],
+    \ ['gray',        '#69d025'],
+    \ ['black',       '#aacc22'],
+    \ ['darkmagenta', '#bbdd77'],
+    \ ['darkblue',    '#ccbb33'],
+    \ ['darkgreen',   '#ff9933'],
+    \ ['darkcyan',    '#ff4422'],
+    \ ['darkred',     '#ff3311'],
+    \ ['red',         '#f80c12'],
     \ ]
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
@@ -220,6 +221,54 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 au Syntax * RainbowParenthesesLoadChevrons
 
+"=====================================================
+" Python-mode settings
+"=====================================================
+" Python-mode
+" Activate rope
+" Keys:
+" K Show python docs
+" <Ctrl-Space> Rope autocomplete
+" <Ctrl-c>g Rope goto definition
+" <Ctrl-c>d Rope show documentation
+" <Ctrl-c>f Rope find occurrences
+" <Leader>b Set, unset breakpoint (g:pymode_breakpoint enabled)
+" [[ Jump on previous class or function (normal, visual, operator modes)
+" ]] Jump on next class or function (normal, visual, operator modes)
+" [M Jump on previous class or method (normal, visual, operator modes)
+" ]M Jump on next class or method (normal, visual, operator modes)
+let g:pymode_rope = 0
+
+" Documentation
+let g:pymode_doc = 0
+let g:pymode_doc_key = 'K'
+"Linting
+let g:pymode_lint = 0
+let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint_ignore="E501,W601,C0110"
+let g:pymode_lint_write = 0
+
+" Support virtualenv
+let g:pymode_virtualenv = 1
+
+" Enable breakpoints plugin
+let g:pymode_breakpoint = 1
+let g:pymode_breakpoint_key = '<leader>b'
+
+" Syntax highlighting
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_indent_errors = g:pymode_syntax_all
+let g:pymode_syntax_space_errors = g:pymode_syntax_all
+
+" Don't autofold code
+let g:pymode_folding = 0
+
+" Get possibility to run Python code
+let g:pymode_run = 0
+
+" Other options
+let g:pymode_options_colorcolumn = 0
 
 "=====================================================
 " User hotkeys

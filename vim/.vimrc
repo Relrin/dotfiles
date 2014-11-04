@@ -39,12 +39,8 @@ Plugin 'guns/vim-clojure-static'        " Highlighting for static types
 Plugin 'JulesWang/css.vim'		" CSS syntax file
 Plugin 'groenewege/vim-less'		" Vim syntax for LESS (dynamic CSS)
 
-" --- Java ---
-Plugin 'vim-scripts/javacomplete'	" Javacomplete, an omni-completion script of JAVA language for vim 7
-
 " --- JavaScript ---
 Plugin 'pangloss/vim-javascript'	" Vastly improved Javascript indentation and syntax support in Vim
-Plugin 'maksimr/vim-jsbeautify'		" Formated javascript files by js-beautify
 
 " --- HTML ---
 Plugin 'othree/html5.vim'		" HTML5 omnicomplete and sytnax
@@ -53,7 +49,6 @@ Plugin 'idanarye/breeze.vim'		" Html navigation like vim-easymotion, tag matchin
 " --- Python ---
 Plugin 'davidhalter/jedi-vim'		" Awesome Python autocompletion with VIM
 Plugin 'klen/python-mode'		" Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
-Plugin 'vim-scripts/pythoncomplete'	" Pythoncomplete omni-completion script shipped with vim 7
 Plugin 'mitsuhiko/vim-jinja'		" Jinja support for vim
 Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
 Plugin 'hynek/vim-python-pep8-indent'   " PEP8 indent
@@ -196,31 +191,6 @@ let g:syntastic_style_error_symbol = 'X'
 let g:syntastic_warning_symbol = 'x'
 let g:syntastic_style_warning_symbol = 'x'
 
-" Rainbow Parentheses
-let g:rbpt_colorpairs = [
-    \ ['gray',        '#a9834b'],
-    \ ['brown',       '#442299'],
-    \ ['darkgray',    '#3b0cbd'],
-    \ ['darkgreen',   '#3311bb'],
-    \ ['darkcyan',    '#4444dd'],
-    \ ['darkred',     '#11aabb'],
-    \ ['darkmagenta', '#12bdb9'],
-    \ ['brown',       '#22ccaa'],
-    \ ['gray',        '#69d025'],
-    \ ['black',       '#aacc22'],
-    \ ['darkmagenta', '#bbdd77'],
-    \ ['darkblue',    '#ccbb33'],
-    \ ['darkgreen',   '#ff9933'],
-    \ ['darkcyan',    '#ff4422'],
-    \ ['darkred',     '#ff3311'],
-    \ ['red',         '#f80c12'],
-    \ ]
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-au Syntax * RainbowParenthesesLoadChevrons
-
 "=====================================================
 " Python-mode settings
 "=====================================================
@@ -348,24 +318,19 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType css setlocal commentstring=/*\ %s\ */
 
-" --- HTML ---
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType html setlocal commentstring=<!--\ %s\ -->
-
-" --- Java ---
-autocmd FileType java setlocal shiftwidth=2 tabstop=8 softtabstop=2 expandtab
-autocmd FileType java setlocal commentstring=//\ %s
-
 " --- JavaScript ---
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd BufNewFile,BufRead *.json setlocal ft=javascript
 autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2 softtabstop=2
 autocmd FileType javascript setlocal commentstring=//\ %s
-autocmd FileType javascript noremap <buffer> <leader>r :call JsBeautify()<cr>
 autocmd FileType javascript let b:javascript_fold = 0
 let javascript_enable_domhtmlcss=1
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_javascript_jshint_args='--config ~/.vim/extern-cfg/jshint.json'
+
+" --- HTML ---
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html setlocal commentstring=<!--\ %s\ -->
 
 " --- Python ---
 let python_highlight_all=1

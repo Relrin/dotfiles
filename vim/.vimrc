@@ -271,20 +271,16 @@ noremap <C-s> :update<CR>
 vnoremap <C-s> <C-C>:update<CR>
 inoremap <C-s> <C-O>:update<CR>
 
-" CTRL-O is Quickopen file
-noremap <C-o> :browse confirm e<CR>
-vnoremap <C-o> :browse confirm e<CR>
-inoremap <C-o> :browse confirm e<CR>
-
-" CTRL-O is Quicksave as.. file
-noremap <C-w> :browse confirm saveas<CR>
-vnoremap <C-w> :browse confirm saveas<CR>
-inoremap <C-w> :browse confirm saveas<CR>
-
 " Settings for buffers
 map <C-q> :bd<CR>         " close current buffer
 noremap <C-Right> :bn<CR> " move to next buffer
 noremap <C-Left> :bp<CR>  " move to previous buffer
+
+" Easier split navigations
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
 
 " Activate autocomplete at <Ctrl+Space>
 inoremap <C-space> <C-x><C-o>

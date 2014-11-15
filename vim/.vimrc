@@ -282,6 +282,10 @@ nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
 
+" Easier change size for splitted windows
+nnoremap <M-Left>  :vertical resize +5<cr>
+nnoremap <M-Right> :vertical resize -5<cr>
+
 " Activate autocomplete at <Ctrl+Space>
 inoremap <C-space> <C-x><C-o>
 

@@ -6,6 +6,8 @@ filetype off 	 " required
 "=====================================================
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
+" for macvim
+"set rtp+=~/.vim/bundle/vundle 
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'		" let Vundle manage Vundle, required

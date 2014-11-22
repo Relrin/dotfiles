@@ -1,11 +1,11 @@
-# set default editors
-export EDITOR=vim
-export GIT_EDITOR=vim
-
 # add bash completion
 if [ -f /usr/local/etc/bash_completion ]; then
   . /usr/local/etc/bash_completion
 fi
+
+# set default editors
+export EDITOR=mvim
+export GIT_EDITOR=mvim
 
 # set custom prompt
 RELRIN_DEFAULT_COLOR="[00m"

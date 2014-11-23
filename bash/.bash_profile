@@ -106,6 +106,10 @@ export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 # don't let virtualenv show prompts by itself
 VIRTUAL_ENV_DISABLE_PROMPT=1
 
+# flags for some Python librarires
+ARCHFLAGS="-arch i386 -arch x86_64"
+PKG_CONFIG_PATH=/usr/local/Cellar/libffi/3.0.13/lib/pkgconfig/
+
 # user aliases
 alias ..='cd ..'
 

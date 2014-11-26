@@ -5,13 +5,12 @@ filetype off 	 " required
 " Vundle settings
 "=====================================================
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-" for macvim
-"set rtp+=~/.vim/bundle/vundle 
+set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'		" let Vundle manage Vundle, required
 "---------=== Code/project navigation ===-------------
+Plugin 'scrooloose/nerdtree'    " A tree explorer plugin for vim
 Plugin 'Shougo/unite.vim' 		" Navigation between buffers and files
 Plugin 'majutsushi/tagbar' 		" Class/module browser
 
@@ -158,8 +157,10 @@ augroup END
 " SnipMate settings
 let g:snippets_dir = "~/.vim/vim-snippets/snippets"
 
+"NERDTree
+map <F1> :NERDTreeToggle<CR>    " browse the list of files in the current directory
+
 " Unite settings
-nnoremap <F1> :Unite file<CR>	" browse the list of files in the current directory
 nnoremap <F2> :Unite buffer<CR> " browse a list of the currently opened buffers
 
 " TaskList settings

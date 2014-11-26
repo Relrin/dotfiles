@@ -5,6 +5,9 @@ filetype off 	 " required
 " Vundle settings
 "=====================================================
 " set the runtime path to include Vundle and initialize
+" for Debian gvim
+"set rtp+=~/.vim/bundle/Vundle.vim
+" for macvim
 set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
 

@@ -177,3 +177,53 @@ hi cCppOut          		guifg=#777777
 " ERuby Highlighting
 hi erubyDelimiter   		guifg=#2c8a16                   gui=bold
 hi erubyComment     		guifg=#4d9b3a                   gui=italic
+
+" Erlang Highlighting
+"hi erlangBIF            guifg=#5E5B5A 
+"hi erlangBinary         guifg=#454842 
+"hi erlangBitType        guifg=#A5AB9F 
+"hi erlangBoolean 		guifg=#AE81FF
+"hi erlangCharacter 		guifg=#F2E246
+"hi erlangConditional 	guifg=#F92672 gui=bold
+"hi erlangConstant 		guifg=#81CFFF gui=bold
+"hi erlangGuard          guifg=#323C35 
+"hi erlangList           guifg=#DD6B6C 
+"hi erlangMacro          guifg=#4D5C62 
+"hi erlangOperator       guifg=#25765D 
+"hi erlangTuple          guifg=#EB78A2 
+
+hi erlangAtom           	guifg=#0086d2 					gui=bold
+hi erlangAttribute      	guifg=#ff0086
+hi erlangBIF            	guifg=#F6D76B
+hi erlangBinary         	guifg=#B2DB88
+hi erlangBitDelimiter   	guifg=#ffffff   guibg=#001217
+hi erlangBitSize        	guifg=#AE81FF
+hi erlangBitType        	guifg=#E8DE51
+hi erlangBitVariable    	guifg=#FDBE00
+hi erlangBoolean        	guifg=#D1C0F0
+hi erlangComment        	guifg=#00d2ff   				gui=italic
+hi erlangConditional    	guifg=#ffffff
+hi erlangDefine         	guifg=#D786D9
+hi erlangDelimiter      	guifg=#ffffff
+hi erlangFloat          	guifg=#AE81FF
+hi erlangFun            	guifg=#82C100           		gui=bold
+hi erlangGuard           	guifg=#ffffff
+hi erlangHex            	guifg=#AE81FF
+hi erlangInclude        	guifg=#F92672
+hi erlangInteger        	guifg=#AE81FF
+hi erlangKeyword        	guifg=#B2DB88
+hi erlangList           	guifg=#ffffff
+hi erlangMacro          	guifg=#9193C2
+hi erlangModifier      		guifg=#ffffff
+hi erlangNoSpellString  	guifg=#0086d2
+hi erlangOperator       	guifg=#ffffff
+hi erlangPreCondit      	guifg=#ffffff
+hi erlangPreProc        	guifg=#ffffff
+hi erlangRecord         	guifg=#9CDE83
+hi erlangRecordDef      	guifg=#9CDE83
+hi erlangString         	guifg=#0086d2
+hi erlangStringModifier 	guifg=#D9681E
+hi erlangTodo           	guifg=#00d2ff   guibg=NONE		gui=italic,bold
+hi erlangTuple          	guifg=#F64747
+hi erlangType           	guifg=#E8DE51
+hi erlangVariable       	guifg=#FDBE00

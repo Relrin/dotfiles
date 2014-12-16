@@ -1,65 +1,66 @@
 set nocompatible " be iMproved, required
-filetype off 	 " required
+filetype off     " required
 
 "=====================================================
 " Vundle settings
 "=====================================================
 " set the runtime path to include Vundle and initialize
-" for Debian gvim
-"set rtp+=~/.vim/bundle/Vundle.vim
-" for macvim
 set rtp+=~/.vim/bundle/vundle
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'		" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'      " let Vundle manage Vundle, required
 "---------=== Code/project navigation ===-------------
 Plugin 'scrooloose/nerdtree'    " A tree explorer plugin for vim
-Plugin 'Shougo/unite.vim' 		" Navigation between buffers and files
-Plugin 'majutsushi/tagbar' 		" Class/module browser
+Plugin 'Shougo/unite.vim'       " Navigation between buffers and files
+Plugin 'majutsushi/tagbar'      " Class/module browser
 
 "------------------=== Other ===----------------------
-Plugin 'fisadev/FixedTaskList.vim' 	" Pending tasks list
-Plugin 'rosenfeld/conque-term' 		" Consoles as buffers
-Plugin 'tpope/vim-surround'		" Parentheses, brackets, quotes, XML tags, and more
+Plugin 'fisadev/FixedTaskList.vim'  " Pending tasks list
+Plugin 'rosenfeld/conque-term'      " Consoles as buffers
+Plugin 'tpope/vim-surround'     " Parentheses, brackets, quotes, XML tags, and more
 Plugin 'kien/rainbow_parentheses.vim'   " Color all 
 
 "--------------=== Snippets support ===---------------
-Plugin 'garbas/vim-snipmate'		" Snippets manager
-Plugin 'MarcWeber/vim-addon-mw-utils'	" dependencies #1
-Plugin 'tomtom/tlib_vim'		" dependencies #2
-Plugin 'honza/vim-snippets'		" snippets repo
+Plugin 'garbas/vim-snipmate'        " Snippets manager
+Plugin 'MarcWeber/vim-addon-mw-utils'   " dependencies #1
+Plugin 'tomtom/tlib_vim'        " dependencies #2
+Plugin 'honza/vim-snippets'     " snippets repo
 
 "---------------=== Languages support ===-------------
-Plugin 'scrooloose/syntastic'		" Syntax checking plugin for Vim
-Plugin 'tpope/vim-commentary'		" Comment stuff out
-Plugin 'mitsuhiko/vim-sparkup'		" Sparkup (XML/jinja/htlm-django/etc.) support
+Plugin 'scrooloose/syntastic'       " Syntax checking plugin for Vim
+Plugin 'tpope/vim-commentary'       " Comment stuff out
+Plugin 'mitsuhiko/vim-sparkup'      " Sparkup (XML/jinja/htlm-django/etc.) support
 
 " --- Clojure ---
-Plugin 'tpope/vim-fireplace'            " Clojure completion	
-Plugin 'guns/vim-clojure-highlight'	" Highlighting code
+Plugin 'tpope/vim-fireplace'            " Clojure completion    
+Plugin 'guns/vim-clojure-highlight' " Highlighting code
 Plugin 'guns/vim-clojure-static'        " Highlighting for static types
 
+" --- Erlang ---
+Plugin 'jimenezrick/vimerl'     " The Erlang plugin for Vim
+
 " --- CSS ---
-Plugin 'JulesWang/css.vim'		" CSS syntax file
-Plugin 'groenewege/vim-less'		" Vim syntax for LESS (dynamic CSS)
+Plugin 'JulesWang/css.vim'      " CSS syntax file
+Plugin 'groenewege/vim-less'        " Vim syntax for LESS (dynamic CSS)
 
 " --- JavaScript ---
-Plugin 'pangloss/vim-javascript'	" Vastly improved Javascript indentation and syntax support in Vim
+Plugin 'pangloss/vim-javascript'    " Vastly improved Javascript indentation and syntax support in Vim
 
 " --- HTML ---
-Plugin 'othree/html5.vim'		" HTML5 omnicomplete and sytnax
-Plugin 'idanarye/breeze.vim'		" Html navigation like vim-easymotion, tag matching, tag highlighting and DOM navigation
+Plugin 'othree/html5.vim'       " HTML5 omnicomplete and sytnax
+Plugin 'idanarye/breeze.vim'        " Html navigation like vim-easymotion, tag matching, tag highlighting and DOM navigation
 
 " --- Python ---
-Plugin 'davidhalter/jedi-vim'		" Awesome Python autocompletion with VIM
-Plugin 'klen/python-mode'		" Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
-Plugin 'mitsuhiko/vim-jinja'		" Jinja support for vim
+Plugin 'davidhalter/jedi-vim'       " Awesome Python autocompletion with VIM
+Plugin 'klen/python-mode'       " Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box
+Plugin 'mitsuhiko/vim-jinja'        " Jinja support for vim
 Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
 Plugin 'hynek/vim-python-pep8-indent'   " PEP8 indent
-Plugin 'tshirtman/vim-cython'		" Cython support
+Plugin 'tshirtman/vim-cython'       " Cython support
+Plugin 'jmcantrell/vim-virtualenv'  " Virtualenv support in VIM
 
 " --- Rust ---
-Plugin 'wting/rust.vim'			" Vim support for Rust file detection and syntax highlighting
+Plugin 'wting/rust.vim'         " Vim support for Rust file detection and syntax highlighting
 
 call vundle#end() " required
 filetype on
@@ -93,6 +94,7 @@ set ttyfast
 " in CLI mode myterm looks better (fruity is GUI only)
 syntax on
 if has("gui_running")
+    set macmeta
     " GUI? Then maximize windows and set custom color sheme
     set lines=50 columns=125
     colorscheme fruity-molokai
@@ -100,6 +102,7 @@ if has("gui_running")
 if has("mac")
     set guifont=Consolas:h13
     set fuoptions=maxvert,maxhorz
+    let macvim_hig_shift_movement = 1
 else
     " set default font for GUI
     "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
@@ -123,13 +126,13 @@ set wildmode=list:full
 
 " Don't bell and blink
 set visualbell t_vb=    " turn off error beep/flash
-set novisualbell 	" turn off visual bell
-set enc=utf-8		" utf-8 default encoding
+set novisualbell    " turn off visual bell
+set enc=utf-8       " utf-8 default encoding
 set ls=2 " always show status bar
-set incsearch		" incremental search
-set hlsearch		" highlighted search results
-set nu			" line numbers
-set scrolloff=5		" keep some more lines for scope
+set incsearch       " incremental search
+set hlsearch        " highlighted search results
+set nu          " line numbers
+set scrolloff=5     " keep some more lines for scope
 
 " Swaps and backups
 if has("win32") || has("win64")
@@ -141,9 +144,9 @@ else
 endif
 
 " Hide some panels
-"set guioptions-=m 	" remove menu bar
-set guioptions-=T 	" remove toolbar
-"set guioptions-=r 	" remove right-hand scroll bar
+"set guioptions-=m  " remove menu bar
+set guioptions-=T   " remove toolbar
+"set guioptions-=r  " remove right-hand scroll bar
 
 " Tab Settings
 set smarttab
@@ -180,8 +183,8 @@ let g:ConqueTerm_StartMessages = 0
 let g:ConqueTerm_CloseOnEnd = 0
 
 " Jedi-vim
-let g:jedi#popup_on_dot = 0 	 	" Disable the automatic suggestions
-let g:jedi#popup_select_first = 0	" Disable first select from auto-complete
+let g:jedi#popup_on_dot = 0         " Disable the automatic suggestions
+let g:jedi#popup_select_first = 0   " Disable first select from auto-complete
 
 " Syntastic
 let g:syntastic_always_populate_loc_list = 1
@@ -289,8 +292,8 @@ nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
 
 " Easier change size for splitted windows
-nnoremap <M-Left>  :vertical resize +5<cr>
-nnoremap <M-Right> :vertical resize -5<cr>
+nnoremap <M-[>  :vertical resize +5<cr>
+nnoremap <M-]> :vertical resize -5<cr>
 
 " Activate autocomplete at <Ctrl+Space>
 inoremap <C-space> <C-x><C-o>
@@ -323,6 +326,9 @@ autocmd FileType clj setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType css setlocal expandtab shiftwidth=4 tabstop=4 softtabstop=4
 autocmd FileType css setlocal commentstring=/*\ %s\ */
+
+" --- Erlang ---
+autocmd Filetype erlang setlocal omnifunc=erlang_complete#Complete
 
 " --- JavaScript ---
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS

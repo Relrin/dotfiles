@@ -179,19 +179,6 @@ hi erubyDelimiter   		guifg=#2c8a16                   gui=bold
 hi erubyComment     		guifg=#4d9b3a                   gui=italic
 
 " Erlang Highlighting
-"hi erlangBIF            guifg=#5E5B5A 
-"hi erlangBinary         guifg=#454842 
-"hi erlangBitType        guifg=#A5AB9F 
-"hi erlangBoolean 		guifg=#AE81FF
-"hi erlangCharacter 		guifg=#F2E246
-"hi erlangConditional 	guifg=#F92672 gui=bold
-"hi erlangConstant 		guifg=#81CFFF gui=bold
-"hi erlangGuard          guifg=#323C35 
-"hi erlangList           guifg=#DD6B6C 
-"hi erlangMacro          guifg=#4D5C62 
-"hi erlangOperator       guifg=#25765D 
-"hi erlangTuple          guifg=#EB78A2 
-
 hi erlangAtom           	guifg=#0086d2 					gui=bold
 hi erlangAttribute      	guifg=#ff0086
 hi erlangBIF            	guifg=#F6D76B

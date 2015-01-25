@@ -110,7 +110,7 @@ else
 endif
 else
    " its terminal, setup another theme
-   colorscheme myterm
+   colorscheme molokai
 endif
 
 tab sball

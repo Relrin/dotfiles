@@ -178,7 +178,7 @@ let g:tagbar_autofocus = 0 " autofocus on Tagbar open
 
 " ConqueTerm
 nnoremap <F5> :ConqueTermSplit ipython<CR> " run python-scripts at <F5>
-nnoremap <F6> :exe "ConqueTermSplit ipython" . expand("%")<CR> " and debug-mode for <F6>
+nnoremap <F6> :exe "ConqueTermSplit ipython " . expand("%")<CR> " and debug-mode for <F6>
 let g:ConqueTerm_StartMessages = 0
 let g:ConqueTerm_CloseOnEnd = 0
 
@@ -224,8 +224,9 @@ let g:pymode_doc = 0
 let g:pymode_doc_key = 'K'
 "Linting
 let g:pymode_lint = 1
-let g:pymode_lint_checker = "pep8,pylint"
-let g:pymode_lint_ignore="E501,W601,C0110"
+let g:pymode_lint_checkers = ['pylint', 'pep8']
+let g:pymode_lint_cwindow = 1
+let g:pymode_lint_ignore="E501,W601,C0110,C0111"
 let g:pymode_lint_write = 0
 
 " Support virtualenv

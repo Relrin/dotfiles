@@ -18,7 +18,6 @@ Plugin 'majutsushi/tagbar'              " Class/module browser
 Plugin 'fisadev/FixedTaskList.vim'      " Pending tasks list
 Plugin 'rosenfeld/conque-term'          " Consoles as buffers
 Plugin 'tpope/vim-surround'             " Parentheses, brackets, quotes, XML tags, and more
-Plugin 'kien/rainbow_parentheses.vim'   " Color all 
 
 "--------------=== Snippets support ===---------------
 Plugin 'garbas/vim-snipmate'            " Snippets manager
@@ -61,6 +60,7 @@ Plugin 'jmcantrell/vim-virtualenv'      " Virtualenv support in VIM
 
 " --- Rust ---
 Plugin 'wting/rust.vim'                 " Vim support for Rust file detection and syntax highlighting
+Plugin 'ebfe/vim-racer'                 " rust code completion in vim via racer
 
 call vundle#end() " required
 filetype on
@@ -152,7 +152,7 @@ set guioptions-=T   " remove toolbar
 set smarttab
 set tabstop=8
 
-" Highlight characters past column 80
+" Highlight characters past column 120
 augroup vimrc_autocmds
     autocmd!
     autocmd FileType ruby,python,javascript,c,cpp highlight Excess ctermbg=DarkGrey guibg=#c12a0f
@@ -183,7 +183,8 @@ let g:ConqueTerm_StartMessages = 0
 let g:ConqueTerm_CloseOnEnd = 0
 
 " Jedi-vim
-let g:jedi#popup_on_dot = 0         " Disable the automatic suggestions
+let g:jedi#show_call_signatures = 1 " Show call signatures
+let g:jedi#popup_on_dot = 1         " Enable autocomplete on dot
 let g:jedi#popup_select_first = 0   " Disable first select from auto-complete
 
 " Syntastic
@@ -222,8 +223,8 @@ let g:pymode_rope = 0
 let g:pymode_doc = 0
 let g:pymode_doc_key = 'K'
 "Linting
-let g:pymode_lint = 0
-let g:pymode_lint_checker = "pyflakes,pep8"
+let g:pymode_lint = 1
+let g:pymode_lint_checker = "pep8,pylint"
 let g:pymode_lint_ignore="E501,W601,C0110"
 let g:pymode_lint_write = 0
 
@@ -359,6 +360,10 @@ let g:syntastic_python_flake8_args='--ignore=E121,E128,E711,E301,E261,E241,E124,
 \ --max-line-length=80'
 
 " --- Rust ---
+set hidden
+let g:racer_cmd = "~/racer/bin/racer"
+let $RUST_SRC_PATH = "~/rust/src"
+autocmd BufRead,BufNewFile *.rs set filetype=rust
 autocmd FileType rust setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
 autocmd FileType rust setlocal commentstring=//\ %s
 

@@ -10,7 +10,7 @@
 	// --- Font settings
 	"font_size": 12,
 	"line_padding_bottom": 0,
-    "line_padding_top": 0,
+        "line_padding_top": 0,
 
 	// --- Settings for coding
 	"detect_indentation": true,
@@ -19,7 +19,7 @@
 	"trim_trailing_white_space_on_save": true,
 
 	// --- Refactoring configuration
-	"shift_tab_unindent": false,
+	"shift_tab_unindent": true,
 	"translate_tabs_to_spaces": true,
 
 	// --- Anaconda configuration
@@ -37,7 +37,7 @@
 		"*.psd", "*.pyc", "*.pyo", "*.sdf", "*.so", "*.suo",
 		"CVS",
 		".DS_Store", ".svn", ".git", ".hg",
-        "__pycache__"
+                "__pycache__"
 
 	],
 }

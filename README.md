@@ -16,22 +16,26 @@ sudo add-apt-repository ppa:fcwu-tw/ppa
 sudo apt-get update
 sudo apt-get install vim
 ```
-2) Install fonts for vim-airline
-  https://github.com/Lokaltog/powerline-fonts
+
+2) Install [powerline-fonts](https://github.com/Lokaltog/powerline-fonts) for vim-airline
+
 3) Install Vundle plugin
 ```bash
 git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
 ```
+
 4) Clone my repository somewhere and copy settings:
 ```bash
 git clone https://github.com/Relrin/dotfiles.git ~/Downloads/
 cp -t ~/Downloads/dotfiles/vim/* ~/.vim/
 mv ~/vim/.vimrc ~/
 ```
+
 5) Run VIM and enter:
 ```bash
 :PluginInstall
 ```
+
 6) Restart VIM and get fun ;)
 
 ## How to install Sublime Text settings

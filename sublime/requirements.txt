@@ -1,0 +1,17 @@
+Anaconda
+Djaneiro
+GitGutter
+JavaScript Completions
+Markdown Preview
+Lua​Autocomplete
+SideBarEnhancements
+SublimeREPL
+SublimeLinter
+SublimeLinter-annotations
+SublimeLinter-contrib-erlc
+SublimeLinter-contrib-rustc
+SublimeLinter-csslint
+SublimeLinter-json
+SublimeLinter-jsxhint
+SublimeLinter-lua
+Theme - Soda

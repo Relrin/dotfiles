@@ -1,0 +1,43 @@
+{
+	// --- Visual settings (appearence)
+	"caret_style": "phase",
+	"color_scheme": "Packages/User/SublimeLinter/Fruity-molokai (SL).tmTheme",
+	"theme": "Soda Dark 3.sublime-theme",
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"open_files_in_new_window": false,
+
+	// --- Font settings
+	"font_size": 12,
+	"line_padding_bottom": 0,
+    "line_padding_top": 0,
+
+	// --- Settings for coding
+	"detect_indentation": true,
+	"rulers": [79],
+	"tab_size": 4,
+	"trim_trailing_white_space_on_save": true,
+
+	// --- Refactoring configuration
+	"shift_tab_unindent": true,
+	"translate_tabs_to_spaces": true,
+
+	// --- Anaconda configuration
+	"anaconda_linter_mark_style": "none",
+
+	// --- Other settings
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"file_exclude_patterns":
+	[
+		".*", "*.a", "*.bak", "*.class", "*.db", "*.dll", "*.dylib",
+		"*.exe", "*.idb", "*.lib", "*.ncb", "*.o", "*.obj", "*.pdb",
+		"*.psd", "*.pyc", "*.pyo", "*.sdf", "*.so", "*.suo",
+		"CVS",
+		".DS_Store", ".svn", ".git", ".hg",
+        "__pycache__"
+
+	],
+}

@@ -1,0 +1,21 @@
+[
+    // Anaconda hotkeys for Python development
+    {"keys": ["ctrl+alt+g"], "command": "anaconda_goto"},
+    {"keys": ["ctrl+alt+f"], "command": "anaconda_find_usages"},
+    {"keys": ["ctrl+alt+d"], "command": "anaconda_doc"},
+    {"keys": ["ctrl+alt+r"], "command": "anaconda_auto_format"},
+    {"command": "anaconda_goto", "keys": ["g", "d"],
+        "context":
+        [
+            { "key": "selector", "operator": "equal", "operand": "source.python" },
+            { "key": "setting.command_mode", "operand": true },
+            { "key": "setting.is_widget", "operand": false }
+        ]
+    },
+
+    // Markdown preview
+    { "keys"   : ["alt+m"],
+      "command": "markdown_preview",
+      "args"   : {"target": "browser", "parser":"markdown" }
+    },
+]

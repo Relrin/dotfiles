@@ -2,10 +2,10 @@
 
 ## F.A.Q.
 
-Q: What i can find there?
+Q: What i can find there?  
 A: You can find there my settings for VIM/conky/etc. programms
 
-Q: Can i steal this?
+Q: Can i steal this?  
 A: Of course, you can use this easily
 
 ## How to install my VIM settings

@@ -10,7 +10,7 @@
 	// --- Font settings
 	"font_size": 12,
 	"line_padding_bottom": 0,
-    "line_padding_top": 0,
+        "line_padding_top": 0,
 
 	// --- Settings for coding
 	"detect_indentation": true,
@@ -37,7 +37,7 @@
 		"*.psd", "*.pyc", "*.pyo", "*.sdf", "*.so", "*.suo",
 		"CVS",
 		".DS_Store", ".svn", ".git", ".hg",
-        "__pycache__"
+                "__pycache__"
 
 	],
 }

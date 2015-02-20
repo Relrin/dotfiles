@@ -21,7 +21,7 @@ sudo apt-get install vim
 
 3) Install Vundle plugin
 ```bash
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
 4) Clone my repository somewhere and copy settings:

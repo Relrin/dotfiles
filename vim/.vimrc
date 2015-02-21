@@ -5,16 +5,17 @@ filetype off     " required
 " Vundle settings
 "=====================================================
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'      " let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'              " let Vundle manage Vundle, required
 "---------=== Code/project navigation ===-------------
 Plugin 'scrooloose/nerdtree'            " A tree explorer plugin for vim
 Plugin 'Shougo/unite.vim'               " Navigation between buffers and files
 Plugin 'majutsushi/tagbar'              " Class/module browser
 
 "------------------=== Other ===----------------------
+Plugin 'bling/vim-airline'              " lean & mean status/tabline for vim that's light as air
 Plugin 'fisadev/FixedTaskList.vim'      " Pending tasks list
 Plugin 'rosenfeld/conque-term'          " Consoles as buffers
 Plugin 'tpope/vim-surround'             " Parentheses, brackets, quotes, XML tags, and more
@@ -31,7 +32,7 @@ Plugin 'tpope/vim-commentary'           " Comment stuff out
 Plugin 'mitsuhiko/vim-sparkup'          " Sparkup (XML/jinja/htlm-django/etc.) support
 
 " --- Clojure ---
-Plugin 'tpope/vim-fireplace'            " Clojure completion    
+Plugin 'tpope/vim-fireplace'            " Clojure completion
 Plugin 'guns/vim-clojure-highlight'     " Highlighting code
 Plugin 'guns/vim-clojure-static'        " Highlighting for static types
 
@@ -55,7 +56,6 @@ Plugin 'klen/python-mode'               " Vim python-mode. PyLint, Rope, Pydoc, 
 Plugin 'mitsuhiko/vim-jinja'            " Jinja support for vim
 Plugin 'mitsuhiko/vim-python-combined'  " Combined Python 2/3 for Vim
 Plugin 'hynek/vim-python-pep8-indent'   " PEP8 indent
-Plugin 'tshirtman/vim-cython'           " Cython support
 Plugin 'jmcantrell/vim-virtualenv'      " Virtualenv support in VIM
 
 " --- Rust ---
@@ -89,28 +89,20 @@ if has("gui_running")
 endif
 set ttyfast
 
+colorscheme nightly
+set guifont=Consolas:h13
+
 " Enable Syntax Colors
 " in GUI mode we go with fruity and Monaco 13
 " in CLI mode myterm looks better (fruity is GUI only)
 syntax on
 if has("gui_running")
     set macmeta
-    " GUI? Then maximize windows and set custom color sheme
     set lines=50 columns=125
-    colorscheme fruity-molokai
 " special settings for vim
 if has("mac")
-    set guifont=Consolas:h13
     set fuoptions=maxvert,maxhorz
     let macvim_hig_shift_movement = 1
-else
-    " set default font for GUI
-    "set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 10
-    set guifont=Input\ Mono\ Regular\ 10
-endif
-else
-   " its terminal, setup another theme
-   colorscheme molokai
 endif
 
 tab sball
@@ -126,13 +118,13 @@ set wildmode=list:full
 
 " Don't bell and blink
 set visualbell t_vb=    " turn off error beep/flash
-set novisualbell    " turn off visual bell
-set enc=utf-8       " utf-8 default encoding
-set ls=2 " always show status bar
-set incsearch       " incremental search
-set hlsearch        " highlighted search results
-set nu          " line numbers
-set scrolloff=5     " keep some more lines for scope
+set novisualbell        " turn off visual bell
+set enc=utf-8           " utf-8 default encoding
+set ls=2                " always show status bar
+set incsearch           " incremental search
+set hlsearch            " highlighted search results
+set nu                  " line numbers
+set scrolloff=5         " keep some more lines for scope
 
 " Swaps and backups
 if has("win32") || has("win64")
@@ -200,6 +192,9 @@ let g:syntastic_error_symbol = 'X'
 let g:syntastic_style_error_symbol = 'X'
 let g:syntastic_warning_symbol = 'x'
 let g:syntastic_style_warning_symbol = 'x'
+
+" Vim-Airline
+let g:airline_theme='powerlineish'
 
 "=====================================================
 " Python-mode settings
@@ -294,7 +289,7 @@ nnoremap <C-l> <C-w><C-l>
 nnoremap <C-h> <C-w><C-h>
 
 " Easier change size for splitted windows
-nnoremap <M-[>  :vertical resize +5<cr>
+nnoremap <M-[> :vertical resize +5<cr>
 nnoremap <M-]> :vertical resize -5<cr>
 
 " Activate autocomplete at <Ctrl+Space>

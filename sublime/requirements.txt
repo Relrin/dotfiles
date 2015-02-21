@@ -4,6 +4,7 @@ GitGutter
 JavaScript Completions
 Markdown Preview
 Lua​Autocomplete
+Rust
 SideBarEnhancements
 SublimeREPL
 SublimeLinter
@@ -11,6 +12,8 @@ SublimeLinter-annotations
 SublimeLinter-contrib-erlc
 SublimeLinter-contrib-rustc
 SublimeLinter-csslint
+Sublimelinter-cppcheck
+SublimeLinter-cpplint
 SublimeLinter-json
 SublimeLinter-jsxhint
 SublimeLinter-lua

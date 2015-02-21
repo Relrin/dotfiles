@@ -1,0 +1,10 @@
+{
+    "cmd":
+            [ "g++ \"$file\" -o \"$file_base_name\" -framework GLUT -framework OpenGL -framework Cocoa && ./\"$file_base_name\""],
+    "working_dir": "${project_path:${folder}}",
+    "selector":
+            [
+                "source.c++"
+            ],
+    "shell": true
+}

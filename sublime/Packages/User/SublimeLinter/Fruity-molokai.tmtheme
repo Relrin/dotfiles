@@ -15,6 +15,9 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 	<string>Fruity-molokai</string>
 	<key>settings</key>
 	<array>
+
+		<!-- Window color scheme part -->
+
 		<dict>
 			<key>settings</key>
 			<dict>
@@ -52,6 +55,9 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 				<string>stippled_underline</string>
 			</dict>
 		</dict>
+
+		<!-- Language color scheme part -->
+
 		<dict>
 			<key>name</key>
 			<string>Comment</string>
@@ -257,7 +263,7 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Library class&#x2f;type</string>
+			<string>Library class</string>
 			<key>scope</key>
 			<string>support.type, support.class</string>
 			<key>settings</key>
@@ -418,7 +424,7 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Function argument</string>
+			<string>Function argument (name)</string>
 			<key>scope</key>
 			<string>meta.property-name support.type.property-name</string>
 			<key>settings</key>
@@ -429,7 +435,7 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Function argument</string>
+			<string>Function argument (key-value)</string>
 			<key>scope</key>
 			<string>meta.property-value punctuation.separator.key-value</string>
 			<key>settings</key>
@@ -440,7 +446,7 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Function argument</string>
+			<string>Function argument (use/use-as/namespace)</string>
 			<key>scope</key>
 			<string>keyword.other.use, keyword.other.function.use, keyword.other.namespace, keyword.other.new, keyword.other.special-method, keyword.other.unit, keyword.other.use-as</string>
 			<key>settings</key>
@@ -451,7 +457,7 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Function argument</string>
+			<string>Function argument (built-in class)</string>
 			<key>scope</key>
 			<string>meta.use support.class.builtin, meta.other.inherited-class support.class.builtin</string>
 			<key>settings</key>
@@ -464,7 +470,7 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Function argument</string>
+			<string>Function argument (other)</string>
 			<key>scope</key>
 			<string>variable.other</string>
 			<key>settings</key>
@@ -475,6 +481,9 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 				<string>normal</string>
 			</dict>
 		</dict>
+
+		<!-- Coffeescript color scheme part -->
+
 		<dict>
 			<key>name</key>
 			<string>Coffeescript Function argument</string>
@@ -488,6 +497,9 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 				<string>italic</string>
 			</dict>
 		</dict>
+
+		<!-- Markdown color scheme part -->
+
 		<dict>
 			<key>name</key>
 			<string>Markdown Titles</string>
@@ -569,7 +581,7 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Markdown bold&#x2f;italic</string>
+			<string>Markdown bold</string>
 			<key>scope</key>
 			<string>markup.bold.markdown, markup.italic.markdown</string>
 			<key>settings</key>
@@ -580,7 +592,7 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Markdown bold&#x2f;italic</string>
+			<string>Markdown bold</string>
 			<key>scope</key>
 			<string>markup.italic.markdown</string>
 			<key>settings</key>
@@ -591,7 +603,7 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Markdown bold&#x2f;italic</string>
+			<string>Markdown bold</string>
 			<key>scope</key>
 			<string>markup.bold.markdown</string>
 			<key>settings</key>
@@ -611,6 +623,9 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 				<string>#00a8c6</string>
 			</dict>
 		</dict>
+
+		<!-- GitGutter color scheme part -->
+
 		<dict>
 			<key>name</key>
 			<string>GitGutter deleted</string>
@@ -644,6 +659,9 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 				<string>#f7b83d</string>
 			</dict>
 		</dict>
+
+		<!-- CSS color scheme part -->
+
 		<dict>
 			<key>name</key>
 			<string>CSS Class</string>
@@ -655,6 +673,285 @@ Released under the MIT License <http://opensource.org/licenses/MIT>
 				<string>#E45635</string>
 			</dict>
 		</dict>
+
+		<!-- C++ color scheme part -->
+
+		<dict>
+			<key>name</key>
+			<string>Constant Character C/C++</string>
+			<key>scope</key>
+			<string>constant.character.escape.c</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#acac00</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Keyword Operators C/C++</string>
+			<key>scope</key>
+			<string>ksource.c++ meta.function.c meta.block.c keyword.operator.c, source.c++ meta.class-struct-block.c++ keyword.operator.c++</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#cc7014</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Functions C/C++</string>
+			<key>scope</key>
+			<string>storage.type.c</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#cc7014</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Methods C/C++</string>
+			<key>scope</key>
+			<string>source.c++ meta.function.c meta.block.c meta.function-call.c support.function.any-method.c, source.c++ meta.function.c meta.block.c meta.function-call.c support.function.any-method.c, source.c++ meta.class-struct-block.c++ entity.name.type.c++, meta.class-struct.c++ entity.name.type.c++</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#b39847</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Arguments C/C++</string>
+			<key>scope</key>
+			<string>meta.function.c meta.block.c meta.function-call.c</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#bebebe</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Preprocesses C/C++</string>
+			<key>scope</key>
+			<string>meta.preprocessor.c, meta.preprocessor.c keyword.control.import.c, meta.preprocessor.macro.c, meta.preprocessor.macro.c keyword.control.import.define.c</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#32731d</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Preprocessor definition C/C++ highlight</string>
+			<key>scope</key>
+			<string>entity.name.function.preprocessor.c</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#49a629</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Include library preprocessor C/C++</string>
+			<key>scope</key>
+			<string>meta.preprocessor.c.include, meta.preprocessor.c.include keyword.control.import.include.c</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#5D67AD</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Include library C/C++ highlight</string>
+			<key>scope</key>
+			<string>string.quoted.double.include.c, string.quoted.other.lt-gt.include.c</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#0086D2</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Storage Modifier C</string>
+			<key>scope</key>
+			<string>storage.modifier.c</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#cc7014</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Storage Modifier C/C++</string>
+			<key>scope</key>
+			<string>storage.modifier.c++</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#4786b3</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Semicolon C/C++</string>
+			<key>scope</key>
+			<string>semi_colon.ccpp</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#5c8ea5</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Semicolon end of line C/C++</string>
+			<key>scope</key>
+			<string>semi_colon.eol.ccpp</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#cc7014</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Brackets C/C++</string>
+			<key>scope</key>
+			<string>open.curly.bracket.ccpp, close.curly.bracket.ccpp,open.round.bracket.ccpp, close.round.bracket.ccpp, open.angle.bracket.ccpp, close.angle.bracket.ccpp, open.curly.bracket.ovr.ccpp, close.curly.bracket.ovr.ccpp</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#bfbaac</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Coma C/C++</string>
+			<key>scope</key>
+			<string>coma.ccpp, semi_colon.ccpp</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#bfbfbf</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Period C/C++</string>
+			<key>scope</key>
+			<string>period.ccpp</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#a64242</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Operators C++</string>
+			<key>scope</key>
+			<string>keyword.operator.arithmetic.ccpp, keyword.operator.comparison.ccpp, keyword.operator.bitwise.ccpp, keyword.operator.logical.ccpp, keyword.operator.compound.ccpp</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>bold</string>
+				<key>foreground</key>
+				<string>#cc7014</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Array C++</string>
+			<key>scope</key>
+			<string>array.ccpp</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#43bfa4</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Address C++</string>
+			<key>scope</key>
+			<string>address.ccpp</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#a373e5</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Pointer C++</string>
+			<key>scope</key>
+			<string>pointer.ccpp</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string></string>
+				<key>foreground</key>
+				<string>#d94cb6</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Deconstructor C++</string>
+			<key>scope</key>
+			<string>deconstructor.ccpp</string>
+			<key>settings</key>
+			<dict>
+				<key>fontStyle</key>
+				<string>italic</string>
+				<key>foreground</key>
+				<string>#b39847</string>
+			</dict>
+		</dict>
+
+
+
 	</array>
 	<key>uuid</key>
 	<string>0ce3266d-4eb7-1ad5-0f7a-90aee6d21dcd</string>

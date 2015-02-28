@@ -11,7 +11,7 @@
 	// --- Font settings
 	"font_size": 12,
 	"line_padding_bottom": 0,
-        "line_padding_top": 0,
+    	"line_padding_top": 0,
 
 	// --- Settings for coding
 	"detect_indentation": true,
@@ -25,12 +25,14 @@
 
 	// --- Anaconda configuration
 	"anaconda_linter_mark_style": "none",
+	"complete_parameters": true,
+	"complete_all_parameters": false,
 
 	// --- Sublime-pep8 configuration
 	"pep8_ignore":
-        [
-         	"E203", "E402"
-        ],
+	[
+	    "E203", "E402"
+	],
 
 	// --- Other settings
 	"ignored_packages":

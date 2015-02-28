@@ -15,7 +15,7 @@
 
 	// --- Settings for coding
 	"detect_indentation": true,
-	"rulers": [79],
+	"rulers": [100],
 	"tab_size": 4,
 	"trim_trailing_white_space_on_save": true,
 
@@ -25,6 +25,12 @@
 
 	// --- Anaconda configuration
 	"anaconda_linter_mark_style": "none",
+
+	// --- Sublime-pep8 configuration
+	"pep8_ignore":
+        [
+        "E203"
+        ],
 
 	// --- Other settings
 	"ignored_packages":

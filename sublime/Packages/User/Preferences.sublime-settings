@@ -29,7 +29,7 @@
 	// --- Sublime-pep8 configuration
 	"pep8_ignore":
         [
-        "E203"
+         	"E203", "E402"
         ],
 
 	// --- Other settings

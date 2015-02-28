@@ -16,4 +16,6 @@ SublimeLinter-cpplint
 SublimeLinter-json
 SublimeLinter-jsxhint
 SublimeLinter-lua
+SublimeLinter-pep8
+SublimeLinter-pylint
 Theme - Soda

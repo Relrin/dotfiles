@@ -1,5 +1,4 @@
 Anaconda
-Djaneiro
 GitGutter
 JavaScript Completions
 Markdown Preview

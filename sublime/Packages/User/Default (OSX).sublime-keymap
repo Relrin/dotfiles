@@ -18,4 +18,8 @@
       "command": "markdown_preview",
       "args"   : {"target": "browser", "parser":"markdown" }
     },
+
+    // Tabs switching
+    { "keys": ["ctrl+right"], "command": "next_view" },
+    { "keys": ["ctrl+left"],  "command": "prev_view" }
 ]

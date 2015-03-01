@@ -21,5 +21,8 @@
 
     // Tabs switching
     { "keys": ["ctrl+right"], "command": "next_view" },
-    { "keys": ["ctrl+left"],  "command": "prev_view" }
+    { "keys": ["ctrl+left"],  "command": "prev_view" },
+    // disable previous hotkey for switching
+    { "keys": ["super+alt+right"], "command": "unbound" },
+    { "keys": ["super+alt+left"],  "command": "unbound" },
 ]

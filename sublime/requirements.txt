@@ -2,10 +2,11 @@ Anaconda
 GitGutter
 JavaScript Completions
 Markdown Preview
-Lua​Autocomplete
+LuaAutocomplete
 Rust
+RustAutoComplete
 SideBarEnhancements
-SublimeREPL
+SublimeHaskell
 SublimeLinter
 SublimeLinter-annotations
 SublimeLinter-contrib-erlc
@@ -17,4 +18,5 @@ SublimeLInter-flake8
 SublimeLinter-json
 SublimeLinter-jsxhint
 SublimeLinter-lua
+SublimeREPL
 Theme - Soda

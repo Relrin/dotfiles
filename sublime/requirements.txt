@@ -13,9 +13,8 @@ SublimeLinter-contrib-rustc
 SublimeLinter-csslint
 Sublimelinter-cppcheck
 SublimeLinter-cpplint
+SublimeLInter-flake8
 SublimeLinter-json
 SublimeLinter-jsxhint
 SublimeLinter-lua
-SublimeLinter-pep8
-SublimeLinter-pylint
 Theme - Soda

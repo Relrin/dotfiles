@@ -15,7 +15,7 @@
 
 	// --- Settings for coding
 	"detect_indentation": true,
-	"rulers": [100],
+	"rulers": [80],
 	"tab_size": 4,
 	"trim_trailing_white_space_on_save": true,
 

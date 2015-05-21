@@ -1,0 +1,11 @@
+{
+  // The full path to the racer binary. If racer is already
+  // in your system path, then this default will be fine.
+  "racer": "~/racer/target/release/racer",
+
+  // A list of search paths. This should generally just
+  // be the path to the rust compiler src/ directory.
+  "search_paths": [
+    "~/rust/src"
+  ]
+}

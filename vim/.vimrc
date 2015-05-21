@@ -60,7 +60,7 @@ Plugin 'jmcantrell/vim-virtualenv'      " Virtualenv support in VIM
 
 " --- Rust ---
 Plugin 'wting/rust.vim'                 " Vim support for Rust file detection and syntax highlighting
-Plugin 'ebfe/vim-racer'                 " rust code completion in vim via racer
+Plugin 'phildawes/racer'                " rust code completion in vim via racer
 
 call vundle#end() " required
 filetype on
@@ -99,9 +99,9 @@ syntax on
 if has("gui_running")
     set macmeta
     set lines=50 columns=125
+endif
 " special settings for vim
 if has("mac")
-    set fuoptions=maxvert,maxhorz
     let macvim_hig_shift_movement = 1
 endif
 
@@ -357,8 +357,8 @@ let g:syntastic_python_flake8_args='--ignore=E121,E128,E711,E301,E261,E241,E124,
 
 " --- Rust ---
 set hidden
-let g:racer_cmd = "~/racer/bin/racer"
-let $RUST_SRC_PATH = "~/rust/src"
+let g:racer_cmd = "/Users/savicvalera/racer/target/release/racer/"
+let $RUST_SRC_PATH = "/Users/savicvalera/rust/src/"
 autocmd BufRead,BufNewFile *.rs set filetype=rust
 autocmd FileType rust setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
 autocmd FileType rust setlocal commentstring=//\ %s

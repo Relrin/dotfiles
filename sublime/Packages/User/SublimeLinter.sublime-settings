@@ -3,7 +3,7 @@
         "debug": false,
         "delay": 0.25,
         "error_color": "D02000",
-        "gutter_theme": "Packages/SublimeLinter/gutter-themes/ProjectIcons/ProjectIcons.gutter-theme",
+        "gutter_theme": "Packages/SublimeLinter/gutter-themes/Koloria/Koloria.gutter-theme",
         "gutter_theme_excludes": [],
         "lint_mode": "background",
         "linters": {
@@ -58,7 +58,7 @@
                 "args": [],
                 "builtins": "",
                 "excludes": [],
-                "ignore": "N801,N802,N803,E203,E226,E309,E402",
+                "ignore": "N801,N802,N803,E203,E226,E301,E309,E402",
                 "jobs": "1",
                 "max-complexity": 10,
                 "max-line-length": null,
@@ -84,7 +84,7 @@
                 "@disable": false,
                 "args": [],
                 "excludes": [],
-                "ignore": "E203,E226,E309,E402",
+                "ignore": "E203,E226,E309,E301,E402",
                 "max-line-length": null,
                 "select": ""
             },

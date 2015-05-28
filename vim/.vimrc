@@ -63,7 +63,6 @@ Plugin 'rust-lang/rust.vim'             " Vim support for Rust file detection an
 Plugin 'phildawes/racer'                " Rust code completion in vim via racer
 Plugin 'timonv/vim-cargo'               " Simple vim command bindings to quickly run cargo stuff from vim
 
-
 call vundle#end() " required
 filetype on
 filetype plugin on

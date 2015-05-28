@@ -59,7 +59,7 @@ Plugin 'hynek/vim-python-pep8-indent'   " PEP8 indent
 Plugin 'jmcantrell/vim-virtualenv'      " Virtualenv support in VIM
 
 " --- Rust ---
-Plugin 'wting/rust.vim'                 " Vim support for Rust file detection and syntax highlighting
+Plugin 'rust-lang/rust.vim'             " Vim support for Rust file detection and syntax highlighting
 Plugin 'phildawes/racer'                " rust code completion in vim via racer
 
 call vundle#end() " required
@@ -90,7 +90,8 @@ endif
 set ttyfast
 
 colorscheme nightly
-set guifont=Consolas:h13
+"set guifont=Consolas:h13
+set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 
 " Enable Syntax Colors
 " in GUI mode we go with fruity and Monaco 13
@@ -125,6 +126,8 @@ set incsearch           " incremental search
 set hlsearch            " highlighted search results
 set nu                  " line numbers
 set scrolloff=5         " keep some more lines for scope
+set showmatch           " show matching brackets/parenthesis
+set matchtime=0         " don't blink when matching
 
 " Swaps and backups
 if has("win32") || has("win64")
@@ -195,6 +198,7 @@ let g:syntastic_style_warning_symbol = 'x'
 
 " Vim-Airline
 let g:airline_theme='powerlineish'
+let g:airline_powerline_fonts = 1
 
 "=====================================================
 " Python-mode settings
@@ -357,8 +361,8 @@ let g:syntastic_python_flake8_args='--ignore=E121,E128,E711,E301,E261,E241,E124,
 
 " --- Rust ---
 set hidden
-let g:racer_cmd = "/Users/savicvalera/racer/target/release/racer/"
-let $RUST_SRC_PATH = "/Users/savicvalera/rust/src/"
+let $RUST_SRC_PATH = "/Users/savicvalera/rust/src"
+let g:racer_cmd = "/Users/savicvalera/racer/target/release/racer"
 autocmd BufRead,BufNewFile *.rs set filetype=rust
 autocmd FileType rust setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
 autocmd FileType rust setlocal commentstring=//\ %s

@@ -22,9 +22,9 @@ Plugin 'tpope/vim-surround'             " Parentheses, brackets, quotes, XML tag
 
 "--------------=== Snippets support ===---------------
 Plugin 'garbas/vim-snipmate'            " Snippets manager
-Plugin 'MarcWeber/vim-addon-mw-utils'   " dependencies #1
-Plugin 'tomtom/tlib_vim'                " dependencies #2
-Plugin 'honza/vim-snippets'             " snippets repo
+Plugin 'MarcWeber/vim-addon-mw-utils'   " Dependencies #1
+Plugin 'tomtom/tlib_vim'                " Dependencies #2
+Plugin 'honza/vim-snippets'             " Snippets repo
 
 "---------------=== Languages support ===-------------
 Plugin 'scrooloose/syntastic'           " Syntax checking plugin for Vim
@@ -60,7 +60,9 @@ Plugin 'jmcantrell/vim-virtualenv'      " Virtualenv support in VIM
 
 " --- Rust ---
 Plugin 'rust-lang/rust.vim'             " Vim support for Rust file detection and syntax highlighting
-Plugin 'phildawes/racer'                " rust code completion in vim via racer
+Plugin 'phildawes/racer'                " Rust code completion in vim via racer
+Plugin 'timonv/vim-cargo'               " Simple vim command bindings to quickly run cargo stuff from vim
+
 
 call vundle#end() " required
 filetype on

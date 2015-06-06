@@ -1,5 +1,4 @@
 Anaconda
-Clang-Complete
 GitGutter
 JavaScript Completions
 Markdown Preview

@@ -2,7 +2,7 @@
 
 ## F.A.Q.
 
-Q: What i can find there?  
+Q: What can I find there?  
 A: You can find there my settings for VIM/conky/etc. programms
 
 Q: Can i steal this?  

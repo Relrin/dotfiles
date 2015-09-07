@@ -117,8 +117,6 @@ PKG_CONFIG_PATH=/usr/local/Cellar/libffi/3.0.13/lib/pkgconfig/
 alias ..='cd ..'
 
 # Docker preferences
-DOCKER_HOST=tcp://192.168.59.103:2376
-DOCKER_CERT_PATH=/Users/savicvalera/.boot2docker/certs/boot2docker-vm
 DOCKER_TLS_VERIFY=1
 
 # Make sure window sizes update correctly.

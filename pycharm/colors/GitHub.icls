@@ -1041,7 +1041,7 @@
     </option>
     <option name="PY.BUILTIN_NAME">
       <value>
-        <option name="FOREGROUND" value="1997ec" />
+        <option name="FOREGROUND" value="1986d5" />
       </value>
     </option>
     <option name="PY.CLASS_DEFINITION">
@@ -1090,7 +1090,7 @@
     </option>
     <option name="PY.NUMBER">
       <value>
-        <option name="FOREGROUND" value="39aed" />
+        <option name="FOREGROUND" value="1986d5" />
       </value>
     </option>
     <option name="PY.OPERATION_SIGN">
@@ -1101,12 +1101,12 @@
     </option>
     <option name="PY.PREDEFINED_DEFINITION">
       <value>
-        <option name="FOREGROUND" value="1997ec" />
+        <option name="FOREGROUND" value="1986d5" />
       </value>
     </option>
     <option name="PY.PREDEFINED_USAGE">
       <value>
-        <option name="FOREGROUND" value="1997ec" />
+        <option name="FOREGROUND" value="1986d5" />
       </value>
     </option>
     <option name="PY.SELF_PARAMETER">

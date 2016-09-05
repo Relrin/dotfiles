@@ -106,8 +106,8 @@ export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 # don't let virtualenv show prompts by itself
 VIRTUAL_ENV_DISABLE_PROMPT=1
 
-# Rust lang: racer autocomplete settings
-export RUST_SRC_PATH=$HOME/rust/src
+# Rust lang - rustup toolchain
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # flags for some Python librarires
 ARCHFLAGS="-arch i386 -arch x86_64"

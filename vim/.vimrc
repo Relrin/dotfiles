@@ -99,7 +99,7 @@ set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
 " in CLI mode myterm looks better (fruity is GUI only)
 syntax on
 if has("gui_running")
-    set macmeta
+    set macmeta " comment this line if you're not using Mac OS
     set lines=50 columns=125
 endif
 " special settings for vim

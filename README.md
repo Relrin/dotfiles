@@ -2,11 +2,11 @@
 
 ## F.A.Q.
 
-Q: What can I find there?  
-A: You can find there my settings for VIM/conky/etc. programms
+Q: What can I find here?  
+A: You can find here my settings for VIM/conky/etc. programms
 
-Q: Can i steal this?  
-A: Of course, you can use this easily
+Q: Can I use this for my own purposes?  
+A: Of course, you can use it easily
 
 ## How to install my VIM settings
 
@@ -40,7 +40,7 @@ mv ~/Downloads/dotfiles/vim/.vimrc ~/
 
 ## How to install Sublime Text settings
 
-1) Copy my settings for Sublime Text 3 into settings folder (but firstly don't forget make backup for old preferences):
+1) Copy my settings for Sublime Text 3 into settings folder (but first of all don't forget to make a backup of old preferences):
 ```bash
 git clone https://github.com/Relrin/dotfiles.git ~/Downloads/
 # for example, Mac OS X using ~/Library/Application Support/Sublime Text 3/Packages/ folder
@@ -48,7 +48,7 @@ cd ~/Downloads/
 cp -r ~/Downloads/dotfiles/sublime/Packages/* ~/Library/Application Support/Sublime Text 3/Packages/
 ```
 
-2) Get list packages from [requirements.txt](https://raw.githubusercontent.com/Relrin/dotfiles/master/sublime/requirements.txt) and install via [PackageControl](https://packagecontrol.io/)
+2) Get list of packages from [requirements.txt](https://raw.githubusercontent.com/Relrin/dotfiles/master/sublime/requirements.txt) and install via [PackageControl](https://packagecontrol.io/)
 
 3) Restart Sublime Text 3 and get fun ;)
 

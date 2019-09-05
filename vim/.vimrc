@@ -146,7 +146,7 @@ set guioptions-=T   " remove toolbar
 
 " Tab Settings
 set smarttab
-set tabstop=8
+set tabstop=4
 
 " Highlight characters past column 120
 augroup vimrc_autocmds
@@ -324,9 +324,6 @@ let g:syntastic_cpp_include_dirs = ['include', '../include']
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_c_include_dirs = ['include', '../include']
 let g:syntastic_c_compiler = 'clang'
-
-" --- Clojure ---
-autocmd FileType clj setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " --- CSS ---
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS

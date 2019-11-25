@@ -121,3 +121,14 @@ DOCKER_TLS_VERIFY=1
 
 # Make sure window sizes update correctly.
 shopt -s checkwinsize
+
+# Small snippets for syntax highlight of text in the clipboards
+function prettify-clipboard {
+  local syntax_type="$1"
+  pbpaste | pygmentize -l $syntax_type -f rtf | pbcopy -Prefer rtf
+}
+
+function prettify-shell {
+  local syntax_type="$1"
+  pygmentize -l $syntax_type
+}

@@ -107,6 +107,11 @@ if has("mac")
     let macvim_hig_shift_movement = 1
 endif
 
+" Enable true color support if it possible (e.g. iTerm2 supports it)
+if has("termguicolors")
+    set termguicolors
+endif
+
 tab sball
 set switchbuf=useopen
 

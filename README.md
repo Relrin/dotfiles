@@ -8,7 +8,12 @@ A: You can find here my settings for VIM/conky/etc. programms
 Q: Can I use this for my own purposes?  
 A: Of course, you can use it easily
 
-## How to install my VIM settings
+Q: Why do you use separate configs for VIM and NeoVIM instead of using a single file?
+A: There are two main reasons: 
+- I wrote [an article](https://habr.com/ru/post/224979/) that explains how setup Vim for Python development. In addition to it a certain group of developers would like to get an identical setup described in the article. So I kinda restricted in experimenting and changing the original `.vimrc` file.
+- With NeoVIM I can freely experimenting in the way I would like. Also NeoVIM it has a lot improvements in comparison to the original VIM, and therefore I can get a better development experience when switching between different programming languages and environments.
+
+## How to install VIM settings
 
 1) Installing VIM lastest version (skip this step, if already installed):
 ```bash
@@ -37,6 +42,29 @@ mv ~/Downloads/dotfiles/vim/.vimrc ~/
 ```
 
 6) Restart VIM and get fun ;)
+
+## How to install NeoVIM setting
+1) Install NeoVIM itself. Follow the instruction descibed [here](https://github.com/neovim/neovim/wiki/Installing-Neovim)
+
+2) Install [powerline-fonts](https://github.com/Lokaltog/powerline-fonts) for vim-airline
+
+3) Install vim-plug for plugin management
+```bash
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+4) Clone my repository and copy settings:
+```bash
+git clone https://github.com/Relrin/dotfiles.git ~/Downloads/dotfiles/
+cp -r ~/Downloads/dotfiles/nvim/* ~/.condig/nvim/
+```
+
+5) Run NeoVIM and install all plugins from the config:
+```bash
+:PlugInstall
+``` 
+
+6) After the installation process, restart NeoVIM and get fun ;)
 
 ## How to install Sublime Text settings
 

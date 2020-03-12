@@ -125,9 +125,7 @@ set wildmode=list:full
 
 " Don't bell and blink
 set visualbell t_vb=    " turn off error beep/flash
-set vb t_vb=            " 
 set noerrorbells        " turn off sound bell
-set novisualbell        " turn off visual bell
 set enc=utf-8           " utf-8 default encoding
 set ls=2                " always show status bar
 set incsearch           " incremental search

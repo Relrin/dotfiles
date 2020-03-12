@@ -8,10 +8,10 @@ A: You can find here my settings for VIM/conky/etc. programms
 Q: Can I use this for my own purposes?  
 A: Of course, you can use it easily
 
-Q: Why do you use separate configs for VIM and NeoVIM instead of using a single file?
+Q: Why do you use separate configs for VIM and NeoVIM instead of using a single file?  
 A: There are two main reasons: 
-- I wrote [an article](https://habr.com/ru/post/224979/) that explains how setup Vim for Python development. In addition to it a certain group of developers would like to get an identical setup described in the article. So I kinda restricted in experimenting and changing the original `.vimrc` file.
-- With NeoVIM I can freely experimenting in the way I would like. Also NeoVIM it has a lot improvements in comparison to the original VIM, and therefore I can get a better development experience when switching between different programming languages and environments.
+- I wrote [an article](https://habr.com/ru/post/224979/) that explains how setup Vim for Python development. In addition to it a certain group of developers would like to get an identical setup described in the article. So I kinda restricted in experimenting and changing the original `.vimrc` file
+- With NeoVIM I can freely experimenting in the way that I would like. Also NeoVIM has a lot improvements in comparison to the original VIM, so I can get a better development experience when switching between different programming languages and environments
 
 ## How to install VIM settings
 

@@ -56,7 +56,7 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubuserc
 4) Clone my repository and copy settings:
 ```bash
 git clone https://github.com/Relrin/dotfiles.git ~/Downloads/dotfiles/
-cp -r ~/Downloads/dotfiles/nvim/* ~/.condig/nvim/
+cp -r ~/Downloads/dotfiles/nvim/* ~/.config/nvim/
 ```
 
 5) Run NeoVIM and install all plugins from the config:

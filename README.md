@@ -86,3 +86,6 @@ VIM:
   ![alt text](https://raw.githubusercontent.com/Relrin/dotfiles/master/screenshots/vim.png)
 Sublime Text 3:
   ![alt text](https://raw.githubusercontent.com/Relrin/dotfiles/master/screenshots/sublime.png)
+
+## Useful articles about setting up NeoVIM
+- [A working Rust Environment with NeoVIM](https://blog.fyber.space/posts/2019-04-28-rust-environment.html)

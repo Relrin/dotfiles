@@ -19,10 +19,11 @@ Plug 'tpope/vim-surround'                     " Parentheses, brackets, quotes, X
 
 "---------------=== Languages support ===-------------
 Plug 'dense-analysis/ale'                     " Async syntax checker / files fix, with Language Server Protocol support
-Plug 'Shougo/deoplete.nvim'                   " 
+Plug 'Shougo/deoplete.nvim'                   " Asynchronous completion framework for neovim
 
 " --- Rust ---
 Plug 'rust-lang/rust.vim'                     " Vim support for Rust file detection and syntax highlighting
+Plug 'racer-rust/vim-racer'                   " Racer auto-completion
 
 call plug#end() " required
 filetype on
@@ -111,6 +112,9 @@ let g:airline_theme='powerlineish'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#ale#enabled = 1
 
+" Racer
+let g:racer_cmd = "~/.cargo/bin/racer"
+
 " Ale
 let g:ale_fixers = {
       \   'rust': ['rustfmt'],
@@ -121,7 +125,7 @@ let g:ale_linters = {
       \}
 
 let g:ale_fix_on_save = 1
-let g:ale_rust_rls_toolchain = 'nightly-2020-03-12'
+let g:ale_rust_rls_toolchain = 'nightly'
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -148,10 +152,10 @@ noremap <silent> <C-k> <c-w>khh  " move to the upper subwindow, CTRL-k
 noremap <silent> <C-j> <c-w>jhh  " move to the lower subwindow, CTRL-j
 
 " Easier change size for splitted window
-map <silent> ∆ <C-w>>       " Increase size of the vertical split, ALT-j
-map <silent> ˆ <C-W>+       " Increase size of the horizontal split, ALT-i
+map <silent> ˙ <C-w><       " Increase size of the vertical split, ALT-h
+map <silent> ∆ <C-W>+       " Increase size of the horizontal split, ALT-j
 map <silent> ˚ <C-W>-       " Decrease size of the horizontal split, ALT-k
-map <silent> ¬ <C-w><       " Decrease size of the vertical split, ALT-l
+map <silent> ¬ <C-w>>       " Decrease size of the vertical split, ALT-l
 
 " Activate autocomplete at <Ctrl+Space>
 inoremap <C-space> <C-x><C-o>
@@ -159,4 +163,6 @@ inoremap <C-space> <C-x><C-o>
 "=====================================================
 " Languages support
 "=====================================================
-
+autocmd BufRead,BufNewFile *.rs set filetype=rust
+autocmd FileType rust setlocal expandtab shiftwidth=4 tabstop=8 softtabstop=4
+autocmd FileType rust setlocal commentstring=//\ %s

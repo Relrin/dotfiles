@@ -19,14 +19,14 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Plugins setup
-require('lazy').setup('plugins')
+require("lazy").setup("plugins")
 
 
 -- Base NVim settings
-vim.wo.number = true                  -- show line numbers
+vim.wo.number = true                -- show line numbers
 vim.o.showmatch = true              -- highlight matching parenthesis
-vim.o.mouse = 'a'                   -- enable mouse support
-vim.o.clipboard = 'unnamedplus'     -- use system clipboard
+vim.o.mouse = "a"                   -- enable mouse support
+vim.o.clipboard = "unnamedplus"     -- use system clipboard
 
 -- Editor settings & theming
 vim.o.termguicolors = true          -- enable true color support

@@ -1,4 +1,3 @@
-
 -- Set <space> as the leader key
 -- Set this key before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '

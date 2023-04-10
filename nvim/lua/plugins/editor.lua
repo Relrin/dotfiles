@@ -8,7 +8,7 @@ return {
             { "<leader>e", "<cmd>Neotree toggle<cr>", desc = "Show/Hide NeoTree" }
         },
         config = function() 
-            require('configs.neo-tree')
+            require('plugins.config.neo-tree')
         end
     },
 

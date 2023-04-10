@@ -3,7 +3,7 @@ return {
     -- auto completion
     {
         "hrsh7th/nvim-cmp",
-        version = false, -- last release is way too old
+        version = false,
         event = "InsertEnter",
         dependencies = {
             "hrsh7th/cmp-nvim-lsp",
@@ -22,8 +22,8 @@ return {
                     end,
                 },
                 mapping = cmp.mapping.preset.insert({
-                    ["<Up>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-                    ["<Down>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+                    ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+                    ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
                     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
                     ["<C-f>"] = cmp.mapping.scroll_docs(4),
                     ["<C-Space>"] = cmp.mapping.complete(),
@@ -39,6 +39,15 @@ return {
                     { name = "buffer" },
                     { name = "path" },
                 }),
+                formatting = {
+                    format = function(_, item)
+                        local icons = require("config").icons.kinds
+                        if icons[item.kind] then
+                            item.kind = icons[item.kind] .. item.kind
+                        end
+                        return item
+                    end,
+                },
                 experimental = {
                     ghost_text = {
                         hl_group = "LspCodeLens",

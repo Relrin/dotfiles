@@ -20,25 +20,58 @@ vim.opt.rtp:prepend(lazypath)
 -- Plugins setup
 require("lazy").setup("plugins")
 
-
 -- Base NVim settings
-vim.wo.number = true                -- show line numbers
-vim.o.showmatch = true              -- highlight matching parenthesis
-vim.o.mouse = "a"                   -- enable mouse support
-vim.o.clipboard = "unnamedplus"     -- use system clipboard
+vim.opt.number = true                           -- show line numbers
+vim.opt.mouse = "a"                             -- enable mouse support
+vim.opt.clipboard = "unnamedplus"               -- use system clipboard
+vim.opt.autowrite = true                        -- enable auto write 
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.conceallevel = 3                        -- hide * markup for bold and italic
+vim.opt.confirm = true                          -- ask for a confirmation before exiting the modified buffer
+vim.opt.cursorline = true                       -- highlighting for the current line
+vim.opt.formatoptions = "jcroqlnt"              -- tcqj
+vim.opt.inccommand = "nosplit"                  -- preview incremental substitute
+vim.opt.laststatus = 0
+vim.opt.timeoutlen = 300
+vim.opt.undofile = true
+vim.opt.undolevels = 10000
+vim.opt.updatetime = 200                        -- save swap file and trigger CursorHold
+vim.opt.wildmode = "longest:full,full"          -- command-line completion mode
+vim.opt.winminwidth = 5                         -- minimum window width
+vim.opt.wrap = false                            -- disable line wrap
 
 -- Editor settings & theming
-vim.o.termguicolors = true          -- enable true color support
 vim.cmd.colorscheme "catppuccin"
+vim.opt.termguicolors = true                    -- enable true color support
+vim.opt.pumblend = 10                           -- popup blend
+vim.opt.pumheight = 10                          -- maximum number of entries in a popup
+vim.opt.scrolloff = 4                           -- lines of context
+vim.opt.sidescrolloff = 8                       -- columns of context
+vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+vim.opt.shiftround = true                       -- round indent
+vim.opt.shortmess:append { W = true, I = true, c = true }
+vim.opt.showmode = false                        -- dont show mode since we have a statusline
+vim.opt.signcolumn = "yes"                      -- always show the signcolumn, otherwise it would shift the text each time
+vim.opt.spelllang = { "en" }                    -- spellchecking in english by default
+vim.opt.splitbelow = true                       -- put new windows below current
+vim.opt.splitright = true                       -- put new windows right of current
 
 -- Search settings
-vim.o.hlsearch = true               -- set highlight on search
-vim.o.ignorecase = true             -- ignore case when searching by default
-vim.o.smartcase = true              -- if has uppercase then case sensitive
+vim.opt.hlsearch = true                         -- set highlight on search
+vim.opt.ignorecase = true                       -- ignore case when searching by default
+vim.opt.smartcase = true                        -- if has uppercase then case sensitive
+vim.opt.grepformat = "%f:%l:%c:%m"              
+vim.opt.grepprg = "rg --vimgrep"
 
 -- Code editing
-vim.o.encoding="utf-8"              -- UTF-8 as the default encoding
-vim.o.tabstop = 4                   -- number of columns occupied by a tab 
-vim.o.shiftwidth = 4                -- width for autoindents
-vim.o.expandtab = true              -- convert tabs to white spaces
-vim.o.smartindent = true            -- autoindent new lines 
+vim.opt.encoding="utf-8"                        -- UTF-8 as the default encoding
+vim.opt.tabstop = 4                             -- number of columns occupied by a tab 
+vim.opt.shiftwidth = 4                          -- width for autoindents
+vim.opt.expandtab = true                        -- convert tabs to white spaces
+vim.opt.smartindent = true                      -- autoindent new lines 
+
+-- Fix markdown indentation settings
+vim.g.markdown_recommended_style = 0
+
+-- Setup the custom configuration for NeoVim
+require("config").setup()

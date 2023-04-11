@@ -44,27 +44,27 @@ mv ~/Downloads/dotfiles/vim/.vimrc ~/
 6) Restart VIM and get fun ;)
 
 ## How to install NeoVIM setting
+Mostly based on the configuration from the [Lazy.Vim](https://github.com/LazyVim/LazyVim) repository, but with adjusted for my own needs. 
+
 1) Install NeoVIM itself. Follow the instruction descibed [here](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 
-2) Install [powerline-fonts](https://github.com/Lokaltog/powerline-fonts) for vim-airline
+2) Install [Nerd fonts](https://www.nerdfonts.com/). Just pick any that you like the most. I personally prefer to use Caskaydia Cove Nerd Font.
 
-3) Install vim-plug for plugin management
-```bash
-curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
+3) Install [ripgrep](https://github.com/BurntSushi/ripgrep)
 
-4) Clone my repository and copy settings:
+4) Install [lazygit](https://github.com/jesseduffield/lazygit)
+
+5) Install latest Node.js (for LSP support).
+
+6) Clone my repository and copy all the files to the nvim directory:
 ```bash
 git clone https://github.com/Relrin/dotfiles.git ~/Downloads/dotfiles/
 cp -r ~/Downloads/dotfiles/nvim/* ~/.config/nvim/
 ```
 
-5) Run NeoVIM and install all plugins from the config:
-```bash
-:PlugInstall
-``` 
+7) Run NeoVIM. On the first run it will install the required dependencies automatically for you.  
 
-6) After the installation process, restart NeoVIM and get fun ;)
+8) Restart NeoVIM and get fun ;)
 
 ## How to install Sublime Text settings
 

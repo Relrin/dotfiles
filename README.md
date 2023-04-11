@@ -44,7 +44,7 @@ mv ~/Downloads/dotfiles/vim/.vimrc ~/
 6) Restart VIM and get fun ;)
 
 ## How to install NeoVIM setting
-Mostly based on the configuration from the [Lazy.Vim](https://github.com/LazyVim/LazyVim) repository, but with adjusted settings for my own needs. 
+Mostly based on the configuration from the [LazyVim](https://github.com/LazyVim/LazyVim) repository, but with adjusted settings for my own needs. 
 
 1) Install NeoVIM itself. Follow the instruction descibed [here](https://github.com/neovim/neovim/wiki/Installing-Neovim)
 

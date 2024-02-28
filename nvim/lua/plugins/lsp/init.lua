@@ -41,7 +41,7 @@ return {
         -- add any global capabilities here
         capabilities = {},
         -- options for vim.lsp.buf.format
-        -- `bufnr` and `filter` is handled by the LazyVim formatter,
+        -- `bufnr` and `filter` is handled by the formatter,
         -- but can be also overridden when specified
         format = {
             formatting_options = nil,
@@ -54,7 +54,6 @@ return {
             -- mason = false, -- set to false if you don't want this server to be installed with mason
             -- Use this to add any additional keymaps
             -- for specific lsp servers
-            ---@type LazyKeysSpec[]
             -- keys = {},
             settings = {
                 Lua = {
@@ -84,8 +83,8 @@ return {
     ---@param opts PluginLspOpts
     config = function(_, opts)
         if Util.has("neoconf.nvim") then
-        local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
-        require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
+            local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
+            require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
         end
 
           -- setup autoformat
@@ -99,7 +98,7 @@ return {
 
         -- setup keymaps
         Util.lsp.on_attach(function(client, buffer)
-            require("lazyvim.plugins.lsp.keymaps").on_attach(client, buffer)
+            require("plugins.lsp.keymaps").on_attach(client, buffer)
         end)
 
         local register_capability = vim.lsp.handlers["client/registerCapability"]
@@ -110,12 +109,12 @@ return {
             ---@type lsp.Client
             local client = vim.lsp.get_client_by_id(client_id)
             local buffer = vim.api.nvim_get_current_buf()
-            require("lazyvim.plugins.lsp.keymaps").on_attach(client, buffer)
+            require("plugins.lsp.keymaps").on_attach(client, buffer)
             return ret
         end
 
         -- diagnostics
-        for name, icon in pairs(require("lazyvim.config").icons.diagnostics) do
+        for name, icon in pairs(require("config").icons.diagnostics) do
             name = "DiagnosticSign" .. name
             vim.fn.sign_define(name, { text = icon, texthl = name, numhl = "" })
         end
@@ -131,11 +130,11 @@ return {
         if type(opts.diagnostics.virtual_text) == "table" and opts.diagnostics.virtual_text.prefix == "icons" then
             opts.diagnostics.virtual_text.prefix = vim.fn.has("nvim-0.10.0") == 0 and "●"
             or function(diagnostic)
-                local icons = require("lazyvim.config").icons.diagnostics
+                local icons = require("config").icons.diagnostics
                 for d, icon in pairs(icons) do
-                if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
-                    return icon
-                end
+                    if diagnostic.severity == vim.diagnostic.severity[d:upper()] then
+                        return icon
+                    end
                 end
             end
         end

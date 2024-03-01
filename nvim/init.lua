@@ -22,6 +22,7 @@ require("lazy").setup("plugins")
 
 -- Base NVim settings
 vim.opt.number = true                           -- show line numbers
+vim.opt.relativenumber = false                  -- don't show relative line numbers
 vim.opt.mouse = "a"                             -- enable mouse support
 vim.opt.clipboard = "unnamedplus"               -- use system clipboard
 vim.opt.autowrite = true                        -- enable auto write 
@@ -39,6 +40,7 @@ vim.opt.updatetime = 200                        -- save swap file and trigger Cu
 vim.opt.wildmode = "longest:full,full"          -- command-line completion mode
 vim.opt.winminwidth = 5                         -- minimum window width
 vim.opt.wrap = false                            -- disable line wrap
+vim.opt.virtualedit = "block"                   -- allow cursor to move where there is no text in visual block mode
 
 -- Editor settings & theming
 vim.cmd.colorscheme "catppuccin"
@@ -47,14 +49,24 @@ vim.opt.pumblend = 10                           -- popup blend
 vim.opt.pumheight = 10                          -- maximum number of entries in a popup
 vim.opt.scrolloff = 4                           -- lines of context
 vim.opt.sidescrolloff = 8                       -- columns of context
-vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize" }
+vim.opt.sessionoptions = { "buffers", "curdir", "tabpages", "winsize", "help", "globals", "skiprtp", "folds" }
 vim.opt.shiftround = true                       -- round indent
-vim.opt.shortmess:append { W = true, I = true, c = true }
+vim.opt.shortmess:append { W = true, I = true, c = true, C = true }
 vim.opt.showmode = false                        -- dont show mode since we have a statusline
 vim.opt.signcolumn = "yes"                      -- always show the signcolumn, otherwise it would shift the text each time
 vim.opt.spelllang = { "en" }                    -- spellchecking in english by default
 vim.opt.splitbelow = true                       -- put new windows below current
 vim.opt.splitright = true                       -- put new windows right of current
+vim.opt.splitkeep = "screen"                    -- keep the text on the same screen line
+opt.list = true                                 -- show invisible characters (e.g. tabs)
+opt.fillchars = {
+  foldopen = "",
+  foldclose = "",
+  fold = " ",
+  foldsep = " ",
+  diff = "╱",
+  eob = " ",
+}
 
 -- Search settings
 vim.opt.hlsearch = true                         -- set highlight on search
